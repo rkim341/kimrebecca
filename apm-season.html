@@ -30,7 +30,9 @@
     </header>
 
     <div class="cs-layout">
-      <aside class="cs-progress" aria-label="On this page"></aside>
+      <aside class="cs-progress" aria-label="On this page">
+        <a class="cs-back" href="index.html#work"><span aria-hidden="true">←</span> back</a>
+      </aside>
       <main class="cs">
 
         <header class="cs-head">
@@ -107,8 +109,34 @@
         <section class="cs-section">
           <h2 class="cs-h3">Other case studies you may like</h2>
           <div class="cs-more">
-            <a href="georgia-tech.html"><h3 class="cs-h4">Georgia Tech App</h3><span>0-&gt;1 Official Georgia Tech App for 50K+</span></a>
-            <a href="jotdown.html"><h3 class="cs-h4">Jotdown</h3><span>Lead of Design for 0→1 Development</span></a>
+            <a class="card" href="georgia-tech.html">
+              <div class="card__media">
+                <img loading="lazy" src="assets/gatech/gatech.hero.jpg" width="1800" height="1013" alt="Official Georgia Tech App on a phone">
+              </div>
+              <div class="card__body">
+                <h3 class="card__title">0-&gt;1 Official Georgia Tech App for 50K+</h3>
+                <p class="card__desc">Lead design for the official Georgia Tech App, combining five apps into one app</p>
+                <div class="tags">
+                  <span class="tag tag--teal">UXD</span>
+                  <span class="tag">Lead UX Designer</span>
+                  <span class="tag">Beta</span>
+                </div>
+              </div>
+            </a>
+            <a class="card" href="jotdown.html">
+              <div class="card__media">
+                <img loading="lazy" src="assets/jotdown/jotdown.mock.jpg" width="1800" height="1013" alt="Jotdown app mockup">
+              </div>
+              <div class="card__body">
+                <h3 class="card__title">Lead of Design for 0→1 Development</h3>
+                <p class="card__desc">AI-Powered Smart Notes with Semantic Search and Category Visualization</p>
+                <div class="tags">
+                  <span class="tag tag--teal">UXD</span>
+                  <span class="tag">Sr UX Designer</span>
+                  <span class="tag">Dev + Design</span>
+                </div>
+              </div>
+            </a>
           </div>
         </section>
       </main>

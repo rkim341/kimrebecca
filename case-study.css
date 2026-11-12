@@ -23,24 +23,47 @@
 
 /* ---------- progress rail (built by case-study.js from [data-nav]) ---------- */
 
+/* The aside always shows the back link; the section list only shows
+   on wide screens where there is room for the side rail. */
 .cs-progress {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-6);
+}
+
+.cs-progress ol {
   display: none;
 }
 
 @media (min-width: 1100px) {
   .cs-progress {
-    display: block;
     position: sticky;
     top: calc(var(--nav-h) + var(--s-8));
     align-self: start;
   }
+  .cs-progress ol {
+    display: flex;
+  }
+}
+
+.cs-back {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  align-self: flex-start;
+  font-size: var(--fs-small);
+  color: var(--secondary);
+  transition: color 0.2s var(--ease);
+}
+
+.cs-back:hover {
+  color: var(--primary);
 }
 
 .cs-progress ol {
   list-style: none;
   margin: 0;
   padding: 0 0 0 var(--s-4);
-  display: flex;
   flex-direction: column;
   gap: var(--s-3);
   border-left: 1px solid var(--divider);
@@ -570,29 +593,11 @@
 
 /* closing + more work */
 
+/* Reuses the home page .card component, thumbnails included. */
 .cs-more {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--s-4);
-}
-
-.cs-more a {
-  display: flex;
-  flex-direction: column;
-  gap: var(--s-2);
-  padding: var(--s-6);
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--divider);
-  transition: background 0.2s var(--ease);
-}
-
-.cs-more a:hover {
-  background: var(--card);
-}
-
-.cs-more span {
-  font-size: var(--fs-small);
-  color: var(--secondary);
+  gap: var(--s-10) var(--s-6);
 }
 
 .cs-actions {
