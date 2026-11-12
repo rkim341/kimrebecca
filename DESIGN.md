@@ -36,6 +36,7 @@ always change together. Only edit a case study's `.html` to change its *words an
 | `--primary` | `rgb(44,44,44)` | Body text, headings, active nav tab |
 | `--secondary` | `rgb(115,115,115)` | Descriptions, subtitles, Back button text |
 | `--disabled` | `rgb(170,170,170)` | Inactive nav tabs, labels, eyebrows |
+| `--faint` | `rgb(204,204,204)` | "Currently" / "Previously" labels (B: Linear) |
 | `--surface` | `#f5f5f5` | Image placeholders, media backgrounds |
 | `--card` | `rgba(179,179,179,.08)` | Button pills, tags, soft card fills |
 | `--divider` | `rgb(235,235,235)` | Borders, rules, progress track |
@@ -47,7 +48,7 @@ always change together. Only edit a case study's `.html` to change its *words an
 
 ### Type
 
-Font: **Hanken Grotesk** (400 regular, 600 semibold), loaded from Google Fonts on every page.
+Font: **Hanken Grotesk** (400 regular, 500 medium, 600 semibold), loaded from Google Fonts on every page.
 Sizes step down at the tablet (≤1199px) and phone (≤809px) breakpoints automatically.
 
 | Token | Desktop | Tablet | Phone | Use |
@@ -70,6 +71,8 @@ Case study titles use `clamp(28px, 4vw, 44px)`. Write arrows as the single chara
 `--s-16` 64 · `--s-32` 128 (112 tablet, 96 phone)
 
 ### Shape and motion
+
+Nav height: `--nav-h` 55px (sticky offsets use it).
 
 Radii: `--radius-sm` 4 · `--radius-md` 8 · `--radius-lg` 16 · pills use `999px`.
 Easing: `--ease` = `cubic-bezier(0, 0, 0.2, 1)`, 0.2s for color and background, 0.3s for image zoom.
@@ -119,14 +122,19 @@ Both layouts read the same projects from `projects.js`.
 - Projects as `.card` in a 2-column grid (1 column on phones), using each project's long `title`,
   description and all tags.
 
-**B: Linear** (`.home-linear`) — current default
-- Two columns from 1000px: a sticky intro on the left (300–380px) and a scrolling project list
-  on the right, 64px apart. Below 1000px they stack and the intro scrolls normally.
-- Intro (`.intro`): name (36–48px, semibold, -0.02em tracking), bio (`--fs-body-lg`, `--secondary`),
-  then "Currently" / "Previously" groups: gray label on the left, roles right-aligned on one line.
-- Projects as `.card--linear`, stacked 40px apart: wide, short thumbnail (3.07:1, 2:1 on phones),
-  then the short `name` in **regular weight** with all tags on the same line to the right, and the
-  description below at `--fs-small`.
+**B: Linear** (`.home-linear`) — current default. Source of truth: Figma file
+"New portfolio (kimrebecca.com)", frame `linear` (node 98:7031, 1512px wide).
+- Page edges: 40px left, 24px right (not `--content-w`). From 1000px: 370px intro column,
+  52px gap, project list fills the rest (1026px at 1512). Below 1000px they stack; phones use
+  `--content-w`.
+- Intro (`.intro`), sticky, top aligned with the first thumbnail:
+  name 48px semibold, line-height 1.03, -0.05em tracking; bio 20px `--secondary`, -0.02em;
+  12px between them; 100px down to the roles; 60px between "Currently" and "Previously".
+  Labels 20px semibold `--faint`; roles 20px medium (500) `--primary`, right-aligned, one line,
+  12px apart.
+- Projects as `.card--linear`, 40px apart: thumbnail 1026:334, 8px radius, no border; 12px to
+  the text; short `name` 24px medium (500), -0.02em, with tags (32px tall) right-aligned on the
+  same line; description 16px `--secondary`, -0.05em, 4px below.
 
 ### Case study page
 Structure every case study follows:
