@@ -100,6 +100,10 @@ translucent bar. The current page's tab gets a soft gray pill (`aria-current="pa
 `.card` → `.card__media` (1.61:1 thumbnail, 16px radius, zooms slightly on hover) →
 `.card__body` (`.card__title`, `.card__desc`, `.tags`). Rendered only by `projects.js`.
 
+`.card--row` is the compact version used for "Other case studies": a 160px thumbnail
+(112px on phones) on the left, title / description / tags stacked on the right, smaller
+title (`--fs-body-lg`) and description (`--fs-small`). Two per row, one per row on phones.
+
 ### Case study page
 Structure every case study follows:
 
@@ -114,10 +118,16 @@ Structure every case study follows:
       .cs-facts                              Timeline / Role / Team / Tools
       section.cs-section[data-nav="Label"]   one per chapter; label shows in the rail
       ...
-      section > .cs-more [data-project-more] other case studies (from projects.js)
+      section.cs-section--more               gray frame around "Other case studies"
+        .cs-more [data-project-more]         row cards (from projects.js)
 ```
 
-Spacing: 32px between the header, hero, facts and first section; 64px between sections.
+Spacing:
+- **Tight top:** 24px between the title block, hero image and facts row.
+- **Roomy content:** 88px above every section (64px margin + 24px gap), 40px on phones,
+  and 32px between the blocks inside a section.
+- **Other case studies frame:** `--surface` background, 32px padding (24/16 on phones),
+  16px radius.
 Rail: 140px wide, 40px gap to the content.
 
 Blocks available inside a section (see `case-study.css`): `cs-prose`, `cs-callouts`,

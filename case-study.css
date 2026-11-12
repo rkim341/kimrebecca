@@ -90,23 +90,38 @@
 
 /* ---------- page body ---------- */
 
-/* Header, hero and facts sit close together (32px); full sections
-   get extra room between each other (64px total). */
+/* Title, hero image and facts sit close together (24px).
+   Every section gets more room: 88px above it (24 + 64) and 32px
+   between the blocks inside it. */
 .cs {
   display: flex;
   flex-direction: column;
-  gap: var(--s-8);
+  gap: var(--s-6);
   min-width: 0;
-}
-
-.cs-section + .cs-section {
-  margin-top: var(--s-8);
 }
 
 .cs-section {
   display: flex;
   flex-direction: column;
+  gap: var(--s-8);
+  margin-top: var(--s-16);
+}
+
+/* "Other case studies": gray frame around the heading and row cards. */
+.cs-section--more {
   gap: var(--s-6);
+  padding: var(--s-8);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+}
+
+@media (max-width: 809px) {
+  .cs-section {
+    margin-top: var(--s-10);
+  }
+  .cs-section--more {
+    padding: var(--s-6) var(--s-4);
+  }
 }
 
 .cs-head {
@@ -603,11 +618,11 @@
 
 /* closing + more work */
 
-/* Reuses the home page .card component, thumbnails included. */
+/* Reuses the home page card as a row card (.card--row). */
 .cs-more {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--s-10) var(--s-6);
+  gap: var(--s-6);
 }
 
 .cs-actions {

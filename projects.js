@@ -59,8 +59,9 @@ var PROJECTS = [
     return wrap;
   }
 
-  function card(project) {
-    var a = el("a", "card");
+  // variant "row" = small thumbnail on the left, text on the right.
+  function card(project, variant) {
+    var a = el("a", variant === "row" ? "card card--row" : "card");
     a.href = project.href;
     var media = el("div", "card__media");
     media.appendChild(img(project.image, true));
@@ -83,7 +84,7 @@ var PROJECTS = [
 
   // Case study: every project except this one.
   document.querySelectorAll("[data-project-more]").forEach(function (grid) {
-    PROJECTS.forEach(function (p) { if (p.slug !== current) grid.appendChild(card(p)); });
+    PROJECTS.forEach(function (p) { if (p.slug !== current) grid.appendChild(card(p, "row")); });
   });
 
   if (!project) return;
