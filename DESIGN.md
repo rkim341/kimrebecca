@@ -79,8 +79,12 @@ Easing: `--ease` = `cubic-bezier(0, 0, 0.2, 1)`, 0.2s for color and background, 
 
 ### Layout
 
-- `--content-w: min(88%, 1600px)` (90% on phones). The nav, home sections and case study layout
-  all use it, so their edges line up on every screen size.
+- **Page edges:** `--edge-l: 40px` and `--edge-r: 24px` (5% each on phones). The nav, every
+  case study, and the B: Linear home page pad their content by these, so the logo, the case
+  study Back button and the home intro all start 40px from the left, and the nav tabs, case study
+  content and project list all end 24px from the right.
+- `--content-w: min(88%, 1600px)` (90% on phones) is the older centered column, still used by the
+  A: Grid home sections, the About page and the content inside the "Other case studies" band.
 - Breakpoints: **desktop ≥1200px**, **tablet 810–1199px**, **phone ≤809px**.
   The home signature switches to the phone crop below 700px (matches the live site).
   The case study progress rail appears from 1100px.
@@ -124,7 +128,7 @@ Both layouts read the same projects from `projects.js`.
 
 **B: Linear** (`.home-linear`) — current default. Source of truth: Figma file
 "New portfolio (kimrebecca.com)", frame `linear` (node 98:7031, 1512px wide).
-- Page edges: 40px left, 24px right (not `--content-w`). From 1000px: 370px intro column,
+- Page edges: `--edge-l` / `--edge-r` (40px left, 24px right), same as the nav and case studies. From 1000px: 370px intro column,
   52px gap, project list fills the rest (1026px at 1512). Below 1000px they stack; phones use
   `--content-w`.
 - Intro (`.intro`), sticky, top aligned with the first thumbnail. Smaller than the Figma
