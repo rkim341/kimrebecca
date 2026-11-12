@@ -133,7 +133,7 @@ Both layouts read the same projects from `projects.js`.
   `--content-w`.
 - Intro (`.intro`), sticky, top aligned with the first thumbnail. Smaller than the Figma
   frame on purpose: name 32px semibold, line-height 1.03, -0.05em tracking; bio 16px
-  `--secondary`; 8px between them; 56px down to the roles; 32px between "Currently" and
+  `--secondary`, -0.01em tracking (same size and tracking as the roles); 8px between them; 56px down to the roles; 32px between "Currently" and
   "Previously". Labels 16px semibold `--faint`; roles 16px medium (500) `--primary`,
   right-aligned, one line, 8px apart. Same sizes on every screen width.
 - Projects as `.card--linear`, 40px apart: thumbnail 1026:334, 8px radius, no border; 12px to
