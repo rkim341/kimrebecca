@@ -61,7 +61,8 @@ Sizes step down at the tablet (≤1199px) and phone (≤809px) breakpoints autom
 | `--fs-small` | 16 | 14 | 12 | Tags, buttons, captions, progress rail |
 | `--fs-label` | 14 | 12 | 12 | Uppercase labels (`cs-label`) |
 
-Case study titles use `clamp(28px, 4vw, 44px)`. Weights: 400 for text, 600 for headings and titles.
+Case study titles use `clamp(28px, 4vw, 44px)`. Write arrows as the single characters
+**→** and **←** (never `->` or `-&gt;`), so they render the same in every title and button. Weights: 400 for text, 600 for headings and titles.
 
 ### Spacing (4px scale)
 
@@ -100,9 +101,10 @@ translucent bar. The current page's tab gets a soft gray pill (`aria-current="pa
 `.card` → `.card__media` (1.61:1 thumbnail, 16px radius, zooms slightly on hover) →
 `.card__body` (`.card__title`, `.card__desc`, `.tags`). Rendered only by `projects.js`.
 
-`.card--row` is the compact version used for "Other case studies": a 160px thumbnail
-(112px on phones) on the left, title and tags stacked on the right, no description,
-smaller title (`--fs-body`). Two per row, one per row on phones.
+`.card--row` is the compact version used for "Other case studies": a 200px thumbnail
+(128px on phones) on the left that stretches to the full height of the card, title and the
+**first two tags** stacked on the right, no description, smaller title (`--fs-body`).
+Two per row, one per row on phones.
 
 ### Case study page
 Structure every case study follows:
@@ -118,8 +120,10 @@ Structure every case study follows:
       .cs-facts                              Timeline / Role / Team / Tools
       section.cs-section[data-nav="Label"]   one per chapter; label shows in the rail
       ...
-      section.cs-section--more               light full-width band for "Other case studies"
-        .cs-more [data-project-more]         row cards (from projects.js)
+  section.cs-more-band                       light full-width band, AFTER .cs-layout so the
+    .cs-more-band__inner                     sticky rail scrolls away before it (no overlap)
+      h2.cs-more-band__title                 centered heading
+      .cs-more [data-project-more]           row cards (from projects.js)
 ```
 
 Spacing:
@@ -127,7 +131,8 @@ Spacing:
 - **Roomy content:** 88px above every section (64px margin + 24px gap), 40px on phones,
   and 32px between the blocks inside a section.
 - **Other case studies band:** `--card` fill running edge to edge across the screen, square
-  corners, 32px top and bottom padding (24px on phones), heading at `--fs-body-lg`.
+  corners, 40px top and bottom padding (32px on phones). Content is centered, max 1040px wide,
+  heading centered at `--fs-body-lg`.
 Rail: 140px wide, 40px gap to the content.
 
 Blocks available inside a section (see `case-study.css`): `cs-prose`, `cs-callouts`,

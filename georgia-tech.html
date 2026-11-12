@@ -298,12 +298,16 @@
           <div class="cs-actions"><a class="button" href="index.html#work">← Back to projects</a></div>
         </section>
 
-        <section class="cs-section cs-section--more">
-          <h2 class="cs-h3">Other case studies you may like</h2>
-          <div class="cs-more" data-project-more></div>
-        </section>
       </main>
     </div>
+
+    <!-- Outside .cs-layout so the sticky progress rail scrolls away before this band. -->
+    <section class="cs-more-band" aria-labelledby="more-title">
+      <div class="cs-more-band__inner">
+        <h2 class="cs-more-band__title" id="more-title">Other case studies you may like</h2>
+        <div class="cs-more" data-project-more></div>
+      </div>
+    </section>
 
     <footer class="footer">rebecca kim - made with coffee chats and daydreams :)</footer>
   </div>

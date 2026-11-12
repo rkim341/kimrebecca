@@ -449,18 +449,22 @@ a.card:hover .card__media img {
 
 /* Row card: small thumbnail left, title + tags right (no description).
    Used for "Other case studies" at the end of each case study. */
+/* The thumbnail stretches to the full height of the row. */
 .card--row {
   display: grid;
-  grid-template-columns: 160px minmax(0, 1fr);
-  align-items: center;
+  grid-template-columns: 200px minmax(0, 1fr);
+  align-items: stretch;
   gap: var(--s-4);
 }
 
 .card--row .card__media {
+  aspect-ratio: auto;
+  min-height: 112px;
   border-radius: var(--radius-md);
 }
 
 .card--row .card__body {
+  align-self: center;
   gap: var(--s-2);
 }
 
@@ -470,7 +474,10 @@ a.card:hover .card__media img {
 
 @media (max-width: 809px) {
   .card--row {
-    grid-template-columns: 112px minmax(0, 1fr);
+    grid-template-columns: 128px minmax(0, 1fr);
+  }
+  .card--row .card__media {
+    min-height: 88px;
   }
 }
 

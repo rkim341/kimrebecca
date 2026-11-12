@@ -10,7 +10,7 @@ var PROJECTS = [
   {
     slug: "georgia-tech",
     href: "georgia-tech.html",
-    title: "0->1 Official Georgia Tech App for 50K+",
+    title: "0→1 Official Georgia Tech App for 50K+",
     desc: "Lead design for the official Georgia Tech App, combining five apps into one app",
     tags: [{ label: "UXD", accent: true }, { label: "Lead UX Designer" }, { label: "Beta" }],
     image: { src: "assets/gatech/gatech.hero.jpg", alt: "Official Georgia Tech App on a phone", width: 1800, height: 1013 }
@@ -51,9 +51,10 @@ var PROJECTS = [
     return node;
   }
 
-  function tags(project) {
+  // limit: show only the first N tags (row cards show 2).
+  function tags(project, limit) {
     var wrap = el("div", "tags");
-    project.tags.forEach(function (t) {
+    project.tags.slice(0, limit || project.tags.length).forEach(function (t) {
       wrap.appendChild(el("span", t.accent ? "tag tag--teal" : "tag", t.label));
     });
     return wrap;
@@ -69,7 +70,7 @@ var PROJECTS = [
     var body = el("div", "card__body");
     body.appendChild(el("h3", "card__title", project.title));
     if (variant !== "row") body.appendChild(el("p", "card__desc", project.desc));
-    body.appendChild(tags(project));
+    body.appendChild(tags(project, variant === "row" ? 2 : 0));
     a.appendChild(media);
     a.appendChild(body);
     return a;
