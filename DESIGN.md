@@ -20,7 +20,7 @@ uses the same tokens and components, so a change made in one place shows up ever
 | `styles.css` | Tokens, nav, buttons, tags, cards, home and about layout | Every page |
 | `case-study.css` | Case study layout and blocks (`cs-*` classes) | All case studies |
 | `case-study.js` | Builds the left progress rail and fills it (dark gray, `--primary`) as you scroll | All case studies |
-| `projects.js` | Project data + rendering of cards, headers and heroes | Home and all case studies |
+| `projects.js` | Project data + rendering of cards (grid, linear, row), headers and heroes | Home and all case studies |
 | `DESIGN.md` | This document | You |
 
 **Changing a case study's format** (padding, text size, fonts, buttons, block styles):
@@ -107,6 +107,27 @@ title and the **first two tags** stacked on the right and aligned to the top of 
 thumbnail, no description, smaller title (`--fs-body`).
 Two per row, one per row on phones.
 
+### Home page layouts
+
+The home page has two saved layouts. Switch with one value on the `<html>` tag in
+`index.html`: `data-home-layout="grid"` or `data-home-layout="linear"`. Preview either
+without changing the file by adding `?layout=grid` or `?layout=linear` to the URL.
+Both layouts read the same projects from `projects.js`.
+
+**A: Grid** (`.home-grid`)
+- Full-width animated "Rebecca" signature, typewriter line, tagline with LinkedIn / email icons.
+- Projects as `.card` in a 2-column grid (1 column on phones), using each project's long `title`,
+  description and all tags.
+
+**B: Linear** (`.home-linear`) — current default
+- Two columns from 1000px: a sticky intro on the left (300–380px) and a scrolling project list
+  on the right, 64px apart. Below 1000px they stack and the intro scrolls normally.
+- Intro (`.intro`): name (36–48px, semibold, -0.02em tracking), bio (`--fs-body-lg`, `--secondary`),
+  then "Currently" / "Previously" groups: gray label on the left, roles right-aligned on one line.
+- Projects as `.card--linear`, stacked 40px apart: wide, short thumbnail (3.07:1, 2:1 on phones),
+  then the short `name` in **regular weight** with all tags on the same line to the right, and the
+  description below at `--fs-small`.
+
 ### Case study page
 Structure every case study follows:
 
@@ -145,7 +166,9 @@ Modifiers for extra space: `cs-head--spaced`, `cs-h3--spaced`; larger subtitle: 
 
 ## How to…
 
-- **Change a project's title, description, tags or thumbnail:** edit its entry in `projects.js`.
+- **Change a project's title, short name, description, tags or thumbnail:** edit its entry in
+  `projects.js`. `title` is the long headline (A: Grid, case study header); `name` is the short
+  label (B: Linear).
   The home card, the case study header and hero, and the "Other case studies" cards all update.
 - **Add a project:** add an entry to `projects.js`, copy an existing case study `.html`, change
   `data-project` on `<body>` to the new slug, and replace the section content.

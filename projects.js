@@ -1,6 +1,7 @@
 /* Single source of truth for every project.
    Edit a project here and it updates everywhere it appears:
-     - the home page grid            <div data-project-grid>
+     - home, A: Grid                 <div data-project-grid>   (uses title)
+     - home, B: Linear               <div data-project-list>   (uses name)
      - the case study header + hero  <header data-project-header> / <div data-project-hero>
      - "Other case studies" cards    <div data-project-more>
    A case study page says which project it is with <body data-project="slug">.
@@ -10,6 +11,7 @@ var PROJECTS = [
   {
     slug: "georgia-tech",
     href: "georgia-tech.html",
+    name: "Official Georgia Tech App",
     title: "0→1 Official Georgia Tech App for 50K+",
     desc: "Lead design for the official Georgia Tech App, combining five apps into one app",
     tags: [{ label: "UXD", accent: true }, { label: "Lead UX Designer" }, { label: "Beta" }],
@@ -18,6 +20,7 @@ var PROJECTS = [
   {
     slug: "jotdown",
     href: "jotdown.html",
+    name: "JotDown",
     title: "Lead of Design for 0→1 Development",
     desc: "AI-Powered Smart Notes with Semantic Search and Category Visualization",
     tags: [{ label: "UXD", accent: true }, { label: "Sr UX Designer" }, { label: "Dev + Design" }],
@@ -26,6 +29,7 @@ var PROJECTS = [
   {
     slug: "apm-season",
     href: "apm-season.html",
+    name: "APM Season",
     title: "Turning Data into 3 New Features and a Redesign",
     desc: "APM Season monetization and job portal redesign, a pro-bono project with Product@GT",
     tags: [{ label: "UX/UI", accent: true }, { label: "Design Lead" }, { label: "UX Research" }],
@@ -76,12 +80,34 @@ var PROJECTS = [
     return a;
   }
 
+  // B: Linear card: wide, short thumbnail; name + tags on one line; description below.
+  function linearCard(project) {
+    var a = el("a", "card card--linear");
+    a.href = project.href;
+    var media = el("div", "card__media");
+    media.appendChild(img(project.image, true));
+    var head = el("div", "card__head");
+    head.appendChild(el("h3", "card__title", project.name || project.title));
+    head.appendChild(tags(project));
+    var body = el("div", "card__body");
+    body.appendChild(head);
+    body.appendChild(el("p", "card__desc", project.desc));
+    a.appendChild(media);
+    a.appendChild(body);
+    return a;
+  }
+
   var current = document.body.getAttribute("data-project");
   var project = PROJECTS.filter(function (p) { return p.slug === current; })[0];
 
   // Home page grid: every project.
   document.querySelectorAll("[data-project-grid]").forEach(function (grid) {
     PROJECTS.forEach(function (p) { grid.appendChild(card(p)); });
+  });
+
+  // Home page, B: Linear: every project.
+  document.querySelectorAll("[data-project-list]").forEach(function (list) {
+    PROJECTS.forEach(function (p) { list.appendChild(linearCard(p)); });
   });
 
   // Case study: every project except this one.

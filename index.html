@@ -1,5 +1,7 @@
 <!doctype html>
-<html lang="en">
+<!-- Home layout: "grid" = A: Grid, "linear" = B: Linear. Change this one value to switch.
+     Preview either one with ?layout=grid or ?layout=linear on the URL. -->
+<html lang="en" data-home-layout="linear">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,6 +13,12 @@
   <link rel="icon" type="image/png" href="assets/images/favicon.png">
   <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
   <link rel="stylesheet" href="styles.css">
+  <script>
+    (function () {
+      var v = new URLSearchParams(location.search).get("layout");
+      if (v === "grid" || v === "linear") document.documentElement.setAttribute("data-home-layout", v);
+    })();
+  </script>
 </head>
 <body>
   <div class="page">
@@ -29,6 +37,8 @@
     </header>
 
     <main>
+      <!-- ===== A: Grid ===== -->
+      <div class="home-grid">
       <section class="hero container">
         <picture>
           <source media="(max-width: 699px)" srcset="assets/images/rebecca_phone.gif" width="1659" height="459">
@@ -55,6 +65,31 @@
         <!-- Cards are rendered from projects.js. -->
         <div class="work__grid" data-project-grid></div>
       </section>
+      </div>
+
+      <!-- ===== B: Linear ===== -->
+      <div class="home-linear container">
+        <aside class="intro">
+          <h1 class="intro__name">Rebecca Kim</h1>
+          <p class="intro__bio">a product-minded UX Designer making data backed decisions who loves craft and building communities</p>
+          <dl class="intro__roles">
+            <div class="intro__group">
+              <dt>Currently</dt>
+              <dd>VP of Design @ iOS Club</dd>
+              <dd>Founding Director @ <a href="https://www.linkedin.com/company/impulsegt/" target="_blank" rel="noopener">Impulse</a></dd>
+            </div>
+            <div class="intro__group">
+              <dt>Previously</dt>
+              <dd>Google</dd>
+              <dd>Delta Air Lines</dd>
+            </div>
+          </dl>
+        </aside>
+        <section class="list" aria-label="Projects">
+          <!-- Cards are rendered from projects.js. -->
+          <div class="list__items" data-project-list></div>
+        </section>
+      </div>
     </main>
 
     <footer class="footer">rebecca kim - made with coffee chats and daydreams :)</footer>
