@@ -479,7 +479,7 @@ p {
 }
 
 .intro__group dt {
-  grid-row: 1 / span 2;
+  grid-row: 1;
   font-weight: 600;
   color: var(--faint);
 }
