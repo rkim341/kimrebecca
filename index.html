@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rebecca Kim — UX Designer</title>
+  <meta name="description" content="Rebecca Kim is a product-minded UX designer making data-backed decisions.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rethink+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page">
+    <header class="nav">
+      <div class="nav__inner">
+        <a class="nav__logo" href="index.html" aria-label="Rebecca Kim, home">
+          <img src="https://framerusercontent.com/images/XBsXSZw0ROfDt5HvyOhJeNhivo.png" alt="" width="32" height="31">
+        </a>
+        <nav aria-label="Primary">
+          <ul class="nav__links">
+            <li><a href="index.html#work" aria-current="page">projects</a></li>
+            <li><a href="about.html">about</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero container">
+        <picture>
+          <source media="(max-width: 809px)" srcset="assets/images/rebecca_phone.gif" width="1659" height="459">
+          <source media="(max-width: 1199px)" srcset="assets/images/rebecca_tablet.gif" width="2140" height="459">
+          <img class="hero__signature" src="assets/images/rebecca_writing.gif" alt="Rebecca" width="2805" height="459">
+        </picture>
+        <p class="hero__line" aria-live="off">
+          <span id="typewriter">a product-minded UX Designer making data backed decisions</span><span class="hero__cursor" aria-hidden="true"></span>
+        </p>
+        <div class="hero__meta">
+        <p class="hero__tagline">Georgia Tech | Prev UX Design Intern @ <span class="hero__org">Google</span> &amp; <span class="hero__org">Delta Air Lines</span></p>
+        <div class="hero__social">
+          <a class="icon-link" href="https://www.linkedin.com/in/rebeccakim13/" aria-label="LinkedIn" target="_blank" rel="noopener">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+          </a>
+          <a class="icon-link" href="mailto:ahinrebecca@gmail.com" aria-label="Email">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+          </a>
+        </div>
+        </div>
+      </section>
+
+      <section class="work container" id="work">
+        <h2 class="sr-only">projects</h2>
+        <div class="work__grid">
+          <!-- Case study pages are not built yet, so the cards are not links. -->
+          <article class="card">
+            <div class="card__media">
+              <img src="assets/gatech/gatech.hero.jpg" width="1800" height="1013" alt="Official Georgia Tech App on a phone" loading="lazy">
+            </div>
+            <div class="card__body">
+              <h3 class="card__title">0-&gt;1 Official Georgia Tech App for 50K+</h3>
+              <p class="card__desc">Lead design for the official Georgia Tech App, combining five apps into one app</p>
+              <div class="tags">
+                <span class="tag tag--teal">UXD</span>
+                <span class="tag">Lead UX Designer</span>
+                <span class="tag">Beta</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card__media">
+              <img src="assets/jotdown/jotdown.mock.jpg" width="1800" height="1013" alt="Jotdown app mockup" loading="lazy">
+            </div>
+            <div class="card__body">
+              <h3 class="card__title">Lead of Design for 0→1 Development</h3>
+              <p class="card__desc">AI-Powered Smart Notes with Semantic Search and Category Visualization</p>
+              <div class="tags">
+                <span class="tag tag--teal">UXD</span>
+                <span class="tag">Sr UX Designer</span>
+                <span class="tag">Dev + Design</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card__media">
+              <img src="assets/apm-season/apmseason.mock.jpg" width="1800" height="1013" alt="APM Season website on two laptop screens" loading="lazy">
+            </div>
+            <div class="card__body">
+              <h3 class="card__title">Turning Data into 3 New Features and a Redesign</h3>
+              <p class="card__desc">APM Season monetization and job portal redesign, a pro-bono project with Product@GT</p>
+              <div class="tags">
+                <span class="tag tag--teal">UX/UI</span>
+                <span class="tag">Design Lead</span>
+                <span class="tag">UX Research</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">rebecca kim - made with coffee chats and daydreams :)</footer>
+  </div>
+
+  <script>
+    (function () {
+      var el = document.getElementById("typewriter");
+      if (!el) return;
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+      var phrases = [
+        "a product-minded UX Designer making data backed decisions",
+        "an AI-Native Designer navigating ambiguity",
+        "a Creative, building design communities on campus"
+      ];
+      var TYPE = 30, DELETE = 20, HOLD = 1200, INITIAL_HOLD = 1600;
+      var p = 0, i = phrases[0].length, deleting = false;
+
+      function tick() {
+        var full = phrases[p];
+        if (!deleting) {
+          if (i < full.length) { i++; el.textContent = full.slice(0, i); return setTimeout(tick, TYPE); }
+          deleting = true;
+          return setTimeout(tick, HOLD);
+        }
+        if (i > 0) { i--; el.textContent = full.slice(0, i); return setTimeout(tick, DELETE); }
+        deleting = false;
+        p = (p + 1) % phrases.length;
+        setTimeout(tick, TYPE);
+      }
+      setTimeout(tick, INITIAL_HOLD);
+    })();
+  </script>
+</body>
+</html>
