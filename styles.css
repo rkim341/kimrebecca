@@ -96,7 +96,7 @@ body {
   margin: 0;
   background: var(--white);
   color: var(--primary);
-  font-family: "Rethink Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-family: "Hanken Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
   font-size: var(--fs-body);
   font-weight: 400;
   line-height: 1.5;
@@ -447,7 +447,7 @@ a.card:hover .card__media img {
   color: var(--secondary);
 }
 
-/* Row card: small thumbnail left, title / description / tags right.
+/* Row card: small thumbnail left, title + tags right (no description).
    Used for "Other case studies" at the end of each case study. */
 .card--row {
   display: grid;
@@ -465,11 +465,7 @@ a.card:hover .card__media img {
 }
 
 .card--row .card__title {
-  font-size: var(--fs-body-lg);
-}
-
-.card--row .card__desc {
-  font-size: var(--fs-small);
+  font-size: var(--fs-body);
 }
 
 @media (max-width: 809px) {

@@ -47,7 +47,7 @@ always change together. Only edit a case study's `.html` to change its *words an
 
 ### Type
 
-Font: **Rethink Sans** (400 regular, 600 semibold), loaded from Google Fonts on every page.
+Font: **Hanken Grotesk** (400 regular, 600 semibold), loaded from Google Fonts on every page.
 Sizes step down at the tablet (≤1199px) and phone (≤809px) breakpoints automatically.
 
 | Token | Desktop | Tablet | Phone | Use |
@@ -101,8 +101,8 @@ translucent bar. The current page's tab gets a soft gray pill (`aria-current="pa
 `.card__body` (`.card__title`, `.card__desc`, `.tags`). Rendered only by `projects.js`.
 
 `.card--row` is the compact version used for "Other case studies": a 160px thumbnail
-(112px on phones) on the left, title / description / tags stacked on the right, smaller
-title (`--fs-body-lg`) and description (`--fs-small`). Two per row, one per row on phones.
+(112px on phones) on the left, title and tags stacked on the right, no description,
+smaller title (`--fs-body`). Two per row, one per row on phones.
 
 ### Case study page
 Structure every case study follows:
@@ -118,7 +118,7 @@ Structure every case study follows:
       .cs-facts                              Timeline / Role / Team / Tools
       section.cs-section[data-nav="Label"]   one per chapter; label shows in the rail
       ...
-      section.cs-section--more               gray frame around "Other case studies"
+      section.cs-section--more               light full-width band for "Other case studies"
         .cs-more [data-project-more]         row cards (from projects.js)
 ```
 
@@ -126,8 +126,8 @@ Spacing:
 - **Tight top:** 24px between the title block, hero image and facts row.
 - **Roomy content:** 88px above every section (64px margin + 24px gap), 40px on phones,
   and 32px between the blocks inside a section.
-- **Other case studies frame:** `--surface` background, 32px padding (24/16 on phones),
-  16px radius.
+- **Other case studies band:** `--card` fill running edge to edge across the screen, square
+  corners, 32px top and bottom padding (24px on phones), heading at `--fs-body-lg`.
 Rail: 140px wide, 40px gap to the content.
 
 Blocks available inside a section (see `case-study.css`): `cs-prose`, `cs-callouts`,

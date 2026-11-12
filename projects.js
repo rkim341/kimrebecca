@@ -59,7 +59,8 @@ var PROJECTS = [
     return wrap;
   }
 
-  // variant "row" = small thumbnail on the left, text on the right.
+  // variant "row" = small thumbnail on the left, title and tags on the right
+  // (no description).
   function card(project, variant) {
     var a = el("a", variant === "row" ? "card card--row" : "card");
     a.href = project.href;
@@ -67,7 +68,7 @@ var PROJECTS = [
     media.appendChild(img(project.image, true));
     var body = el("div", "card__body");
     body.appendChild(el("h3", "card__title", project.title));
-    body.appendChild(el("p", "card__desc", project.desc));
+    if (variant !== "row") body.appendChild(el("p", "card__desc", project.desc));
     body.appendChild(tags(project));
     a.appendChild(media);
     a.appendChild(body);
