@@ -16,7 +16,13 @@
     list.appendChild(li);
     return a;
   });
+  var fill = document.createElement("span");
+  fill.className = "cs-progress__fill";
+  fill.setAttribute("aria-hidden", "true");
+  list.appendChild(fill);
   rail.appendChild(list);
+
+  var main = document.querySelector(".cs") || document.body;
 
   function setCurrent(index) {
     links.forEach(function (a, i) {
@@ -25,7 +31,17 @@
     });
   }
 
+  // 0 at the top of the case study, 1 when its end reaches the bottom of the screen.
+  function setProgress() {
+    var rect = main.getBoundingClientRect();
+    var total = rect.height - window.innerHeight;
+    var p = total > 0 ? -rect.top / total : 1;
+    p = Math.max(0, Math.min(1, p));
+    list.style.setProperty("--progress", p.toFixed(4));
+  }
+
   function update() {
+    setProgress();
     var line = window.innerHeight * 0.3;
     var current = 0;
     sections.forEach(function (s, i) {

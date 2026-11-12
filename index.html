@@ -52,59 +52,15 @@
 
       <section class="work container" id="work">
         <h2 class="sr-only">projects</h2>
-        <div class="work__grid">
-          <!-- Each card links to its case study page. -->
-          <a class="card" href="georgia-tech.html">
-            <div class="card__media">
-              <img src="assets/gatech/gatech.hero.jpg" width="1800" height="1013" alt="Official Georgia Tech App on a phone" loading="lazy">
-            </div>
-            <div class="card__body">
-              <h3 class="card__title">0-&gt;1 Official Georgia Tech App for 50K+</h3>
-              <p class="card__desc">Lead design for the official Georgia Tech App, combining five apps into one app</p>
-              <div class="tags">
-                <span class="tag tag--teal">UXD</span>
-                <span class="tag">Lead UX Designer</span>
-                <span class="tag">Beta</span>
-              </div>
-            </div>
-          </a>
-
-          <a class="card" href="jotdown.html">
-            <div class="card__media">
-              <img src="assets/jotdown/jotdown.mock.jpg" width="1800" height="1013" alt="Jotdown app mockup" loading="lazy">
-            </div>
-            <div class="card__body">
-              <h3 class="card__title">Lead of Design for 0→1 Development</h3>
-              <p class="card__desc">AI-Powered Smart Notes with Semantic Search and Category Visualization</p>
-              <div class="tags">
-                <span class="tag tag--teal">UXD</span>
-                <span class="tag">Sr UX Designer</span>
-                <span class="tag">Dev + Design</span>
-              </div>
-            </div>
-          </a>
-
-          <a class="card" href="apm-season.html">
-            <div class="card__media">
-              <img src="assets/apm-season/apmseason.mock.jpg" width="1800" height="1013" alt="APM Season website on two laptop screens" loading="lazy">
-            </div>
-            <div class="card__body">
-              <h3 class="card__title">Turning Data into 3 New Features and a Redesign</h3>
-              <p class="card__desc">APM Season monetization and job portal redesign, a pro-bono project with Product@GT</p>
-              <div class="tags">
-                <span class="tag tag--teal">UX/UI</span>
-                <span class="tag">Design Lead</span>
-                <span class="tag">UX Research</span>
-              </div>
-            </div>
-          </a>
-        </div>
+        <!-- Cards are rendered from projects.js. -->
+        <div class="work__grid" data-project-grid></div>
       </section>
     </main>
 
     <footer class="footer">rebecca kim - made with coffee chats and daydreams :)</footer>
   </div>
 
+  <script src="projects.js"></script>
   <script>
     (function () {
       var el = document.getElementById("typewriter");

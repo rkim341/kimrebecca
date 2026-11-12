@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="case-study.css">
 </head>
-<body>
+<body data-project="jotdown">
   <div class="page">
     <header class="nav">
       <div class="nav__inner">
@@ -31,17 +31,14 @@
 
     <div class="cs-layout">
       <aside class="cs-progress" aria-label="On this page">
-        <a class="cs-back" href="index.html#work"><span aria-hidden="true">←</span> back</a>
+        <a class="button button--back" href="index.html#work"><span aria-hidden="true">←</span> Back</a>
       </aside>
       <main class="cs">
 
-        <header class="cs-head">
-          <h1 class="cs-title">Lead of Design for 0→1 Development</h1>
-          <p class="cs-lede">AI-Powered Smart Notes with Semantic Search and Category Visualization</p>
-          <div class="tags"><span class="tag tag--teal">UXD</span><span class="tag">Sr UX Designer</span><span class="tag">Dev + Design</span></div>
-        </header>
+        <!-- Title, description, tags and hero image come from projects.js. -->
+        <header class="cs-head" data-project-header></header>
 
-        <div class="cs-hero"><img src="assets/jotdown/jotdown.mock.jpg" alt="Jotdown app mockup"></div>
+        <div class="cs-hero" data-project-hero></div>
 
         <!-- TEMPLATE: fill in each section below. Every section with a data-nav attribute
              automatically appears in the sticky progress list. Delete or add sections freely. -->
@@ -108,42 +105,14 @@
 
         <section class="cs-section">
           <h2 class="cs-h3">Other case studies you may like</h2>
-          <div class="cs-more">
-            <a class="card" href="georgia-tech.html">
-              <div class="card__media">
-                <img loading="lazy" src="assets/gatech/gatech.hero.jpg" width="1800" height="1013" alt="Official Georgia Tech App on a phone">
-              </div>
-              <div class="card__body">
-                <h3 class="card__title">0-&gt;1 Official Georgia Tech App for 50K+</h3>
-                <p class="card__desc">Lead design for the official Georgia Tech App, combining five apps into one app</p>
-                <div class="tags">
-                  <span class="tag tag--teal">UXD</span>
-                  <span class="tag">Lead UX Designer</span>
-                  <span class="tag">Beta</span>
-                </div>
-              </div>
-            </a>
-            <a class="card" href="apm-season.html">
-              <div class="card__media">
-                <img loading="lazy" src="assets/apm-season/apmseason.mock.jpg" width="1800" height="1013" alt="APM Season website on two laptop screens">
-              </div>
-              <div class="card__body">
-                <h3 class="card__title">Turning Data into 3 New Features and a Redesign</h3>
-                <p class="card__desc">APM Season monetization and job portal redesign, a pro-bono project with Product@GT</p>
-                <div class="tags">
-                  <span class="tag tag--teal">UX/UI</span>
-                  <span class="tag">Design Lead</span>
-                  <span class="tag">UX Research</span>
-                </div>
-              </div>
-            </a>
-          </div>
+          <div class="cs-more" data-project-more></div>
         </section>
       </main>
     </div>
 
     <footer class="footer">rebecca kim - made with coffee chats and daydreams :)</footer>
   </div>
+  <script src="projects.js"></script>
   <script src="case-study.js"></script>
 </body>
 </html>

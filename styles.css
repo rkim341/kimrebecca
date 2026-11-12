@@ -287,6 +287,16 @@ p {
   background: var(--divider);
 }
 
+/* Back pill: quieter text, used at the top of every case study. */
+.button--back {
+  align-self: flex-start;
+  color: var(--secondary);
+}
+
+.button--back:hover {
+  color: var(--primary);
+}
+
 /* ---------- home ---------- */
 
 .hero {
@@ -466,6 +476,7 @@ a.card:hover .card__media img {
 }
 
 .polaroid {
+  margin: 0;
   flex: none;
   display: flex;
   flex-direction: column;

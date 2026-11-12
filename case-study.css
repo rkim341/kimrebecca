@@ -10,14 +10,14 @@
   padding: var(--s-10) 0 var(--s-32);
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  justify-content: center;
-  gap: var(--s-10);
+  gap: var(--s-6);
 }
 
+/* Rail + content fill the shared content width (no max on the content). */
 @media (min-width: 1100px) {
   .cs-layout {
-    grid-template-columns: 168px minmax(0, 960px);
-    gap: 56px;
+    grid-template-columns: 140px minmax(0, 1fr);
+    gap: var(--s-10);
   }
 }
 
@@ -46,21 +46,9 @@
   }
 }
 
-.cs-back {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--s-2);
-  align-self: flex-start;
-  font-size: var(--fs-small);
-  color: var(--secondary);
-  transition: color 0.2s var(--ease);
-}
-
-.cs-back:hover {
-  color: var(--primary);
-}
 
 .cs-progress ol {
+  position: relative;
   list-style: none;
   margin: 0;
   padding: 0 0 0 var(--s-4);
@@ -69,7 +57,21 @@
   border-left: 1px solid var(--divider);
 }
 
-.cs-progress a {
+/* Teal line that fills down the rail as the reader scrolls.
+   case-study.js sets --progress from 0 to 1. */
+.cs-progress__fill {
+  position: absolute;
+  left: -1px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  border-radius: 2px;
+  background: var(--teal);
+  transform: scaleY(var(--progress, 0));
+  transform-origin: top;
+}
+
+.cs-progress ol a {
   position: relative;
   display: block;
   font-size: var(--fs-small);
@@ -77,33 +79,28 @@
   transition: color 0.2s var(--ease);
 }
 
-.cs-progress a:hover {
+.cs-progress ol a:hover {
   color: var(--secondary);
 }
 
-.cs-progress a[aria-current="true"] {
+.cs-progress ol a[aria-current="true"] {
   color: var(--primary);
   font-weight: 600;
 }
 
-.cs-progress a[aria-current="true"]::before {
-  content: "";
-  position: absolute;
-  left: calc(-1 * var(--s-4) - 1px);
-  top: 2px;
-  bottom: 2px;
-  width: 2px;
-  background: var(--teal);
-  border-radius: 2px;
-}
-
 /* ---------- page body ---------- */
 
+/* Header, hero and facts sit close together (32px); full sections
+   get extra room between each other (64px total). */
 .cs {
   display: flex;
   flex-direction: column;
-  gap: var(--s-16);
+  gap: var(--s-8);
   min-width: 0;
+}
+
+.cs-section + .cs-section {
+  margin-top: var(--s-8);
 }
 
 .cs-section {
@@ -151,6 +148,19 @@
 .cs-sub {
   font-size: var(--fs-body);
   color: var(--secondary);
+}
+
+.cs-sub--lg {
+  font-size: var(--fs-body-lg);
+}
+
+/* Extra space above a heading that starts a new group inside a section. */
+.cs-head--spaced {
+  margin-top: var(--s-10);
+}
+
+.cs-h3--spaced {
+  margin-top: var(--s-6);
 }
 
 .cs-prose {
