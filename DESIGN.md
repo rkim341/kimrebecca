@@ -127,11 +127,11 @@ Both layouts read the same projects from `projects.js`.
 - Page edges: 40px left, 24px right (not `--content-w`). From 1000px: 370px intro column,
   52px gap, project list fills the rest (1026px at 1512). Below 1000px they stack; phones use
   `--content-w`.
-- Intro (`.intro`), sticky, top aligned with the first thumbnail:
-  name 48px semibold, line-height 1.03, -0.05em tracking; bio 20px `--secondary`, -0.02em;
-  12px between them; 100px down to the roles; 60px between "Currently" and "Previously".
-  Labels 20px semibold `--faint`; roles 20px medium (500) `--primary`, right-aligned, one line,
-  12px apart.
+- Intro (`.intro`), sticky, top aligned with the first thumbnail. Smaller than the Figma
+  frame on purpose: name 32px semibold, line-height 1.03, -0.05em tracking; bio 16px
+  `--secondary`; 8px between them; 56px down to the roles; 32px between "Currently" and
+  "Previously". Labels 16px semibold `--faint`; roles 16px medium (500) `--primary`,
+  right-aligned, one line, 8px apart. Same sizes on every screen width.
 - Projects as `.card--linear`, 40px apart: thumbnail 1026:334, 8px radius, no border; 12px to
   the text; short `name` 24px medium (500), -0.02em, with tags (32px tall) right-aligned on the
   same line; description 16px `--secondary`, -0.05em, 4px below.

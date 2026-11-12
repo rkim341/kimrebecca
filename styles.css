@@ -438,24 +438,24 @@ p {
 .intro {
   display: flex;
   flex-direction: column;
-  gap: 100px;
+  gap: 56px;
 }
 
 .intro__top {
   display: flex;
   flex-direction: column;
-  gap: var(--s-3);
+  gap: var(--s-2);
 }
 
 .intro__name {
-  font-size: 48px;
+  font-size: 32px;
   font-weight: 600;
   line-height: 1.03;
   letter-spacing: -0.05em;
 }
 
 .intro__bio {
-  font-size: 20px;
+  font-size: 16px;
   letter-spacing: -0.02em;
   color: var(--secondary);
 }
@@ -464,16 +464,16 @@ p {
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 60px;
-  font-size: 20px;
-  letter-spacing: -0.02em;
+  gap: var(--s-8);
+  font-size: 16px;
+  letter-spacing: -0.01em;
 }
 
 .intro__group {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   column-gap: var(--s-6);
-  row-gap: var(--s-3);
+  row-gap: var(--s-2);
 }
 
 .intro__group dt {
@@ -498,20 +498,10 @@ p {
 
 @media (max-width: 999px) {
   .intro {
-    gap: var(--s-10);
-  }
-  .intro__roles {
     gap: var(--s-8);
   }
-}
-
-@media (max-width: 809px) {
-  .intro__name {
-    font-size: 40px;
-  }
-  .intro__bio,
   .intro__roles {
-    font-size: var(--fs-body-lg);
+    gap: var(--s-6);
   }
 }
 
