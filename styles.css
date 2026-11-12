@@ -449,22 +449,28 @@ a.card:hover .card__media img {
 
 /* Row card: small thumbnail left, title + tags right (no description).
    Used for "Other case studies" at the end of each case study. */
-/* The thumbnail stretches to the full height of the row. */
+/* The thumbnail is exactly as tall as the title + tags next to it:
+   the image is taken out of the flow so only the text sets the row height,
+   and the text sits at the top of the thumbnail. */
 .card--row {
   display: grid;
-  grid-template-columns: 200px minmax(0, 1fr);
+  grid-template-columns: 136px minmax(0, 1fr);
   align-items: stretch;
   gap: var(--s-4);
 }
 
 .card--row .card__media {
   aspect-ratio: auto;
-  min-height: 112px;
   border-radius: var(--radius-md);
 }
 
+.card--row .card__media img {
+  position: absolute;
+  inset: 0;
+}
+
 .card--row .card__body {
-  align-self: center;
+  align-self: start;
   gap: var(--s-2);
 }
 
@@ -474,10 +480,7 @@ a.card:hover .card__media img {
 
 @media (max-width: 809px) {
   .card--row {
-    grid-template-columns: 128px minmax(0, 1fr);
-  }
-  .card--row .card__media {
-    min-height: 88px;
+    grid-template-columns: 112px minmax(0, 1fr);
   }
 }
 

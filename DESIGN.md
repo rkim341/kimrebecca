@@ -19,7 +19,7 @@ uses the same tokens and components, so a change made in one place shows up ever
 |---|---|---|
 | `styles.css` | Tokens, nav, buttons, tags, cards, home and about layout | Every page |
 | `case-study.css` | Case study layout and blocks (`cs-*` classes) | All case studies |
-| `case-study.js` | Builds the left progress rail and fills it as you scroll | All case studies |
+| `case-study.js` | Builds the left progress rail and fills it (dark gray, `--primary`) as you scroll | All case studies |
 | `projects.js` | Project data + rendering of cards, headers and heroes | Home and all case studies |
 | `DESIGN.md` | This document | You |
 
@@ -40,7 +40,7 @@ always change together. Only edit a case study's `.html` to change its *words an
 | `--card` | `rgba(179,179,179,.08)` | Button pills, tags, soft card fills |
 | `--divider` | `rgb(235,235,235)` | Borders, rules, progress track |
 | `--white` | `#fff` | Page background |
-| `--teal` | `#71bbc7` | Progress fill, accents |
+| `--teal` | `#71bbc7` | Accents |
 | `--teal-dark` | `rgb(47,125,138)` | Accent tag text, stat numbers, focus ring |
 | `--teal-tint` | `rgba(113,187,199,.16)` | Accent tag and callout background |
 | `--pink` | `rgb(255,171,208)` | Brand accent (logo dot) |
@@ -101,9 +101,10 @@ translucent bar. The current page's tab gets a soft gray pill (`aria-current="pa
 `.card` → `.card__media` (1.61:1 thumbnail, 16px radius, zooms slightly on hover) →
 `.card__body` (`.card__title`, `.card__desc`, `.tags`). Rendered only by `projects.js`.
 
-`.card--row` is the compact version used for "Other case studies": a 200px thumbnail
-(128px on phones) on the left that stretches to the full height of the card, title and the
-**first two tags** stacked on the right, no description, smaller title (`--fs-body`).
+`.card--row` is the compact version used for "Other case studies": a 136px thumbnail
+(112px on phones) on the left that is **exactly as tall as the title + tags** beside it,
+title and the **first two tags** stacked on the right and aligned to the top of the
+thumbnail, no description, smaller title (`--fs-body`).
 Two per row, one per row on phones.
 
 ### Case study page
@@ -122,7 +123,7 @@ Structure every case study follows:
       ...
   section.cs-more-band                       light full-width band, AFTER .cs-layout so the
     .cs-more-band__inner                     sticky rail scrolls away before it (no overlap)
-      h2.cs-more-band__title                 centered heading
+      h2.cs-more-band__title                 heading, left-aligned with the thumbnails
       .cs-more [data-project-more]           row cards (from projects.js)
 ```
 
@@ -131,13 +132,15 @@ Spacing:
 - **Roomy content:** 88px above every section (64px margin + 24px gap), 40px on phones,
   and 32px between the blocks inside a section.
 - **Other case studies band:** `--card` fill running edge to edge across the screen, square
-  corners, 40px top and bottom padding (32px on phones). Content is centered, max 1040px wide,
-  heading centered at `--fs-body-lg`.
+  corners, 40px top and bottom padding (32px on phones). Content block is centered, max 1040px wide;
+  heading left-aligned with the thumbnails at `--fs-body-lg`.
 Rail: 140px wide, 40px gap to the content.
 
 Blocks available inside a section (see `case-study.css`): `cs-prose`, `cs-callouts`,
 `cs-figure`, `cs-features`, `cs-stats`, `cs-themes`, `cs-cards` (`--2`, `--4`), `cs-box`,
 `cs-pair`, `cs-steps` / `cs-result`, `cs-chips`, `cs-actions`, and `ph` image placeholders.
+The only way back to the projects grid is the **← Back** pill at the top of the rail; case studies
+do not end with a separate "Back to projects" button.
 Modifiers for extra space: `cs-head--spaced`, `cs-h3--spaced`; larger subtitle: `cs-sub--lg`.
 
 ## How to…

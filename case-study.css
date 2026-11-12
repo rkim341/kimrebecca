@@ -57,7 +57,7 @@
   border-left: 1px solid var(--divider);
 }
 
-/* Teal line that fills down the rail as the reader scrolls.
+/* Dark gray line that fills down the rail as the reader scrolls.
    case-study.js sets --progress from 0 to 1. */
 .cs-progress__fill {
   position: absolute;
@@ -66,7 +66,7 @@
   bottom: 0;
   width: 2px;
   border-radius: 2px;
-  background: var(--teal);
+  background: var(--primary);
   transform: scaleY(var(--progress, 0));
   transform-origin: top;
 }
@@ -127,7 +127,6 @@
   font-size: var(--fs-body-lg);
   font-weight: 600;
   line-height: 1.25;
-  text-align: center;
 }
 
 @media (max-width: 809px) {
@@ -637,6 +636,7 @@
 .cs-more {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start; /* each card sizes to its own text, not the taller neighbor */
   gap: var(--s-6);
 }
 
