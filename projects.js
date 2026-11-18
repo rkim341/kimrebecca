@@ -12,8 +12,8 @@ var PROJECTS = [
     slug: "georgia-tech",
     href: "georgia-tech.html",
     name: "Official Georgia Tech App",
-    title: "0→1 Official Georgia Tech App for 50K+",
-    desc: "Lead design for the official Georgia Tech App, combining five apps into one app",
+    title: "Georgia Tech App",
+    desc: "Launching the official Georgia Tech App, combining eight apps into one, all-in-one app for 50K+ students.",
     tags: [{ label: "UXD", accent: true }, { label: "Lead UX Designer" }, { label: "Beta" }],
     image: { src: "assets/gatech/gatech.hero.jpg", alt: "Official Georgia Tech App on a phone", width: 1800, height: 1013 }
   },
@@ -21,8 +21,8 @@ var PROJECTS = [
     slug: "jotdown",
     href: "jotdown.html",
     name: "JotDown",
-    title: "Lead of Design for 0→1 Development",
-    desc: "AI-Powered Smart Notes with Semantic Search and Category Visualization",
+    title: "JotDown",
+    desc: "AI-Powered Smart Note App with Semantic (natural language) Search and Category Visualization (UX Design)",
     tags: [{ label: "UXD", accent: true }, { label: "Sr UX Designer" }, { label: "Dev + Design" }],
     image: { src: "assets/jotdown/jotdown.mock.jpg", alt: "Jotdown app mockup", width: 1800, height: 1013 }
   },
