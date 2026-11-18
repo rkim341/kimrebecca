@@ -11,11 +11,19 @@
   gap: var(--s-6);
 }
 
-/* Rail + content fill the shared content width (no max on the content). */
+/* Rail + content sit in a centered column, 60% of the screen. */
 @media (min-width: 1100px) {
   .cs-layout {
     grid-template-columns: 140px minmax(0, 1fr);
     gap: var(--s-10);
+    width: 60%;
+    margin: 0 auto;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .cs-more-band__inner {
+    width: 60%;
+    max-width: none;
   }
 }
 
