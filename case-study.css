@@ -709,12 +709,8 @@
   line-height: 1.25;
 }
 
-.cs-final__title span {
-  color: var(--disabled);
-}
-
 .cs-final__desc {
-  font-size: var(--fs-small);
+  font-size: 14px;
   line-height: 1.4;
   color: var(--secondary);
 }
