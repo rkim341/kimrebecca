@@ -467,9 +467,9 @@ p {
 }
 
 .intro__about {
-  font-size: 11px;
+  font-size: 14px;
   letter-spacing: -0.01em;
-  color: var(--secondary);
+  color: var(--primary);
 }
 
 .intro__roles {
