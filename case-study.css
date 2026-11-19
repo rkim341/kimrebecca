@@ -86,7 +86,7 @@
 }
 
 .cs-progress ol a:hover {
-  color: var(--teal-dark);
+  color: var(--secondary);
 }
 
 .cs-progress ol a[aria-current="true"] {
