@@ -37,6 +37,7 @@ var PROJECTS = [
   },
   {
     slug: "conversate",
+    hidden: true, // remove this line to show it on the site
     href: "conversate.html",
     name: "Conversate",
     title: "Conversate",
@@ -107,24 +108,25 @@ var PROJECTS = [
   }
 
   var current = document.body.getAttribute("data-project");
+  var LIVE = PROJECTS.filter(function (p) { return !p.hidden; });
   var project = PROJECTS.filter(function (p) { return p.slug === current; })[0];
 
   // Home page grid: every project.
   document.querySelectorAll("[data-project-grid]").forEach(function (grid) {
-    PROJECTS.forEach(function (p) { grid.appendChild(card(p)); });
+    LIVE.forEach(function (p) { grid.appendChild(card(p)); });
   });
 
   // Home page, B: Linear: every project.
   document.querySelectorAll("[data-project-list]").forEach(function (list) {
-    PROJECTS.forEach(function (p) { list.appendChild(linearCard(p)); });
+    LIVE.forEach(function (p) { list.appendChild(linearCard(p)); });
   });
 
   // Case study: every project except this one.
   document.querySelectorAll("[data-project-more]").forEach(function (grid) {
     // Suggest the next two projects in order, wrapping around to the start.
-    var i = PROJECTS.findIndex(function (p) { return p.slug === current; });
+    var i = LIVE.findIndex(function (p) { return p.slug === current; });
     for (var n = 1; n <= 2; n++) {
-      grid.appendChild(card(PROJECTS[(i + n) % PROJECTS.length], "row"));
+      grid.appendChild(card(LIVE[(i + n) % LIVE.length], "row"));
     }
   });
 

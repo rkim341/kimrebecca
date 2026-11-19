@@ -427,6 +427,11 @@ p {
     position: sticky;
     top: calc(var(--nav-h) + 37px);
     align-self: start;
+    /* Fill the viewport so the closing paragraph sits at the very bottom. */
+    height: calc(100vh - var(--nav-h) - 37px - var(--s-6));
+  }
+  .intro__about {
+    margin-top: auto;
   }
 }
 
@@ -462,7 +467,7 @@ p {
 }
 
 .intro__about {
-  font-size: 16px; /* same size and tracking as the bio */
+  font-size: 11px;
   letter-spacing: -0.01em;
   color: var(--secondary);
 }
