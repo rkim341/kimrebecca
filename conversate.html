@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Conversate — Rebecca Kim</title>
+  <meta name="description" content="Conversate: Building conversational confidence and facilitating meaningful conversations for introverts (UX Design)">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+  <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="case-study.css">
+</head>
+<body data-project="conversate">
+  <div class="page">
+    <header class="nav">
+      <div class="nav__inner">
+        <a class="nav__logo" href="index.html" aria-label="Rebecca Kim, home">
+          <img src="https://framerusercontent.com/images/XBsXSZw0ROfDt5HvyOhJeNhivo.png" alt="" width="32" height="31">
+        </a>
+        <nav aria-label="Primary">
+          <ul class="nav__links">
+            <li><a href="index.html#work">projects</a></li>
+            <li><a href="about.html">about</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <div class="cs-layout">
+      <aside class="cs-progress" aria-label="On this page">
+        <a class="button button--back" href="index.html#work"><span aria-hidden="true">←</span> Back</a>
+      </aside>
+      <main class="cs">
+
+        <!-- Title, description, tags and hero image come from projects.js. -->
+        <header class="cs-head" data-project-header></header>
+
+        <div class="cs-hero" data-project-hero></div>
+
+        <!-- TEMPLATE: fill in each section below. Every section with a data-nav attribute
+             automatically appears in the sticky progress list. Delete or add sections freely. -->
+
+        <div class="cs-facts">
+          <div class="cs-fact"><span class="cs-label">Timeline</span><p>[Duration]<br>[Start - End]</p></div>
+          <div class="cs-fact"><span class="cs-label">My Role</span><p>[Your role]</p></div>
+          <div class="cs-fact"><span class="cs-label">Team</span><p>[Team makeup]</p></div>
+          <div class="cs-fact"><span class="cs-label">Tools</span><p>[Tools]</p></div>
+        </div>
+
+        <section class="cs-section" id="project" data-nav="Context">
+          <div class="cs-head"><h2 class="cs-h2">The Project</h2></div>
+          <div class="cs-prose"><p>Conversate builds conversational confidence and facilitates meaningful conversations for introverts.</p></div>
+          <div class="cs-callouts">
+            <div class="cs-callout"><h3 class="cs-h4">The Problem:</h3><p>Conversation cards like “We’re Not Really Strangers” are reciprocal, but start from zero every time and only happen among comfortable friends. Speech-training apps build skills over time, but users practice alone or with AI, so there is never reciprocation.</p></div>
+            <div class="cs-callout"><h3 class="cs-h4">The Outcome:</h3><p>An experience that combines real human reciprocity with skill-building that grows over time, specifically training conversation skills for social settings.</p></div>
+          </div>
+        </section>
+
+        <section class="cs-section" id="why" data-nav="Why">
+          <h2 class="cs-h2">Why is it innovative?</h2>
+          <div class="cs-prose">
+            <p>Conversate is the only experience that combines real human reciprocity with skill-building that grows over time, specifically training conversation skills for social settings.</p>
+            <p>Existing conversation cards like “We’re Not Really Strangers” are reciprocal, but they start from zero every time and only occur amongst comfortable friends. Speech-training apps build skills over time, but users practice alone or with AI, so there is never reciprocation.</p>
+          </div>
+        </section>
+
+        <section class="cs-section" id="how" data-nav="How">
+          <h2 class="cs-h2">How does it improve a person’s life?</h2>
+          <div class="cs-prose">
+            <p>Users start with one minute of daily articulation practice by recording themselves, then move on to anonymous, low stakes practice with real people virtually. Finally, users can utilize deep prompt cards for in-person conversations.</p>
+            <p>Progress is easily visible and feedback compares users only to themselves, never to others, to encourage users to return and continue developing their conversational skills.</p>
+          </div>
+        </section>
+
+        <section class="cs-section" id="learned" data-nav="Learned">
+          <h2 class="cs-h2">What did I learn?</h2>
+          <div class="cs-prose">
+            <p>I learned to be intentional about the usage of AI. It is useful for transcription and coaching, but when facing real interactions in replies, reflection, and real conversation, it is important to involve real human interaction.</p>
+          </div>
+        </section>
+
+      </main>
+    </div>
+
+    <!-- Outside .cs-layout so the sticky progress rail scrolls away before this band. -->
+    <section class="cs-more-band" aria-labelledby="more-title">
+      <div class="cs-more-band__inner">
+        <h2 class="cs-more-band__title" id="more-title">Other case studies you may like</h2>
+        <div class="cs-more" data-project-more></div>
+      </div>
+    </section>
+
+    <footer class="footer">rebecca kim - made with coffee chats and daydreams :)</footer>
+  </div>
+  <script src="projects.js"></script>
+  <script src="case-study.js"></script>
+</body>
+</html>

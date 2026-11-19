@@ -34,6 +34,15 @@ var PROJECTS = [
     desc: "Monetization & Information Architecture focused Job Portal Redesign (UX Design)",
     tags: [{ label: "UX/UI", accent: true }, { label: "Design Lead" }, { label: "UX Research" }],
     image: { src: "assets/apm-season/apmseason.mock.jpg", alt: "APM Season website on two laptop screens", width: 1800, height: 1013 }
+  },
+  {
+    slug: "conversate",
+    href: "conversate.html",
+    name: "Conversate",
+    title: "Conversate",
+    desc: "Building conversational confidence and facilitating meaningful conversations for introverts (UX Design)",
+    tags: [{ label: "UXD", accent: true }],
+    image: { src: "assets/conversate/conversate.hero.png", alt: "Conversate app", width: 5760, height: 3240 }
   }
 ];
 
