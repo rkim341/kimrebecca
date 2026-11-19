@@ -160,4 +160,31 @@
       render(first);
     }
   });
+
+  // "drag me!" hint after 2s in the footer, until the logo is first grabbed
+  var hint = document.createElement("div");
+  hint.className = "footer__hint";
+  hint.textContent = "drag me!";
+  hint.setAttribute("aria-hidden", "true");
+  footer.appendChild(hint);
+  function placeHint() {
+    hint.style.left = first.x + SIZE / 2 + "px";
+    hint.style.top = first.y - 4 + "px";
+  }
+  placeHint();
+  window.addEventListener("load", placeHint);
+  window.addEventListener("resize", placeHint);
+  var timer = null;
+  function hideHint() { clearTimeout(timer); hint.classList.remove("is-visible"); }
+  if ("IntersectionObserver" in window) {
+    new IntersectionObserver(function (entries) {
+      if (first.moved) return hideHint();
+      if (entries[0].isIntersecting) {
+        timer = setTimeout(function () {
+          if (!first.moved) { placeHint(); hint.classList.add("is-visible"); }
+        }, 2000);
+      } else hideHint();
+    }, { threshold: 0.6 }).observe(footer);
+  }
+  first.el.addEventListener("pointerdown", hideHint);
 })();
