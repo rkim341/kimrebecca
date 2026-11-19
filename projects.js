@@ -121,7 +121,11 @@ var PROJECTS = [
 
   // Case study: every project except this one.
   document.querySelectorAll("[data-project-more]").forEach(function (grid) {
-    PROJECTS.forEach(function (p) { if (p.slug !== current) grid.appendChild(card(p, "row")); });
+    // Suggest the next two projects in order, wrapping around to the start.
+    var i = PROJECTS.findIndex(function (p) { return p.slug === current; });
+    for (var n = 1; n <= 2; n++) {
+      grid.appendChild(card(PROJECTS[(i + n) % PROJECTS.length], "row"));
+    }
   });
 
   if (!project) return;
