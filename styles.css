@@ -616,18 +616,16 @@ a.card:hover .card__media img {
 
 /* Row card: small thumbnail left, title + tags right (no description).
    Used for "Other case studies" at the end of each case study. */
-/* The thumbnail is exactly as tall as the title + tags next to it:
-   the image is taken out of the flow so only the text sets the row height,
-   and the text sits at the top of the thumbnail. */
+/* Every thumbnail is the same fixed size (16:9), with the text beside it. */
 .card--row {
   display: grid;
   grid-template-columns: 136px minmax(0, 1fr);
-  align-items: stretch;
+  align-items: start;
   gap: var(--s-4);
 }
 
 .card--row .card__media {
-  aspect-ratio: auto;
+  aspect-ratio: 16 / 9;
   border-radius: var(--radius-md);
 }
 
