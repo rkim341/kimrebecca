@@ -718,7 +718,8 @@ a.card:hover .card__title {
 }
 
 .about__text a:not(.button) {
-  border-bottom: 1px solid var(--disabled);
+  color: var(--teal-dark);
+  border-bottom: 1px solid var(--teal-dark);
 }
 
 .about__text a:not(.button) {
@@ -726,8 +727,8 @@ a.card:hover .card__title {
 }
 
 .about__text a:not(.button):hover {
-  color: var(--teal-dark);
-  border-color: var(--teal-dark);
+  color: var(--teal);
+  border-color: var(--teal);
 }
 
 .about__text .button {
@@ -796,7 +797,14 @@ a.card:hover .card__title {
 }
 
 .exp__org a {
-  border-bottom: 1px solid var(--disabled);
+  color: var(--teal-dark);
+  border-bottom: 1px solid var(--teal-dark);
+  transition: color 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+
+.exp__org a:hover {
+  color: var(--teal);
+  border-color: var(--teal);
 }
 
 .exp__date {
@@ -814,31 +822,6 @@ a.card:hover .card__title {
     height: 44px;
     border-radius: var(--radius-md);
   }
-}
-
-.life {
-  display: flex;
-  flex-direction: column;
-  gap: var(--s-6);
-}
-
-.life__strip {
-  display: flex;
-  gap: var(--s-4);
-  overflow-x: auto;
-  scroll-snap-type: x proximity;
-  padding-bottom: var(--s-3);
-  scrollbar-width: thin;
-}
-
-.life__strip img {
-  flex: none;
-  width: 260px;
-  height: 320px;
-  object-fit: cover;
-  border-radius: var(--radius-lg);
-  scroll-snap-align: start;
-  background: var(--surface);
 }
 
 .contact {
