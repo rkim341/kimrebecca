@@ -467,6 +467,9 @@ p {
 }
 
 .intro__about {
+  padding: var(--s-4);
+  border-radius: var(--radius-lg);
+  background: #f6f6f6;
   font-size: 14px;
   letter-spacing: -0.01em;
   color: var(--primary);
