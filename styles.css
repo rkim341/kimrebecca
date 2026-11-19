@@ -868,3 +868,26 @@ a.card:hover .card__media img {
     scroll-behavior: auto !important;
   }
 }
+
+/* footer: draggable logo */
+.footer {
+  position: relative;
+  overflow: hidden;
+  min-height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.footer__logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  will-change: transform;
+}
+.footer__logo.is-dragging { cursor: grabbing; }
