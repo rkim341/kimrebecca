@@ -30,8 +30,8 @@ var PROJECTS = [
     slug: "apm-season",
     href: "apm-season.html",
     name: "APM Season",
-    title: "Turning Data into 3 New Features and a Redesign",
-    desc: "APM Season monetization and job portal redesign, a pro-bono project with Product@GT",
+    title: "APM Season",
+    desc: "Monetization & Information Architecture focused Job Portal Redesign (UX Design)",
     tags: [{ label: "UX/UI", accent: true }, { label: "Design Lead" }, { label: "UX Research" }],
     image: { src: "assets/apm-season/apmseason.mock.jpg", alt: "APM Season website on two laptop screens", width: 1800, height: 1013 }
   }
