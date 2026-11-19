@@ -140,7 +140,7 @@
     startLoop();
   });
 
-  // first logo starts centered exactly on top of the text
+  // first logo starts centered just above the text
   function textCenter() {
     var node = footer.firstChild;
     while (node && node.nodeType !== 3) node = node.nextSibling;
@@ -149,7 +149,7 @@
     var range = document.createRange();
     range.selectNodeContents(node);
     var t = range.getBoundingClientRect();
-    return { x: t.left + t.width / 2 - r.left, y: t.top + t.height / 2 - r.top };
+    return { x: t.left + t.width / 2 - r.left, y: t.top - r.top - SIZE / 2 - 12 };
   }
   var c = textCenter();
   var first = make(c.x, c.y);
