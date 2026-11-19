@@ -41,7 +41,7 @@ var PROJECTS = [
     name: "Conversate",
     title: "Conversate",
     desc: "Building conversational confidence and facilitating meaningful conversations for introverts (UX Design)",
-    tags: [{ label: "UXD", accent: true }],
+    tags: [{ label: "UXD", accent: true }, { label: "Senior Capstone" }, { label: "AI Prototyping" }],
     image: { src: "assets/conversate/conversate.hero.png", alt: "Conversate app", width: 5760, height: 3240 }
   }
 ];
