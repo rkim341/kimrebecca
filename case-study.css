@@ -132,6 +132,7 @@
 }
 
 .cs-more-band__title {
+  text-align: center;
   font-size: var(--fs-body-lg);
   font-weight: 600;
   line-height: 1.25;
@@ -645,6 +646,7 @@
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start; /* each card sizes to its own text, not the taller neighbor */
+  justify-content: center;
   gap: 32px;
 }
 
@@ -673,53 +675,4 @@
   background: var(--card);
   color: var(--secondary);
   font-size: var(--fs-small);
-}
-
-/* ---------- gallery (bento) ---------- */
-
-/* 4 x 3 grid. Tile 1 is the big 2x2, tiles 2, 5 and 6 are wide. */
-.cs-bento {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  grid-auto-rows: 180px;
-  gap: 12px;
-}
-
-.cs-bento__item {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--divider);
-  background: var(--surface);
-}
-
-.cs-bento__item img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-.cs-bento__item--ph {
-  border-style: dashed;
-  color: var(--disabled);
-  font-size: var(--fs-small);
-}
-
-.cs-bento__item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
-.cs-bento__item:nth-child(2) { grid-column: span 2; }
-.cs-bento__item:nth-child(5) { grid-column: span 2; }
-.cs-bento__item:nth-child(6) { grid-column: span 2; }
-
-@media (max-width: 809px) {
-  .cs-bento {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-auto-rows: 140px;
-    gap: 12px;
-  }
-  .cs-bento__item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
-  .cs-bento__item:nth-child(2),
-  .cs-bento__item:nth-child(5),
-  .cs-bento__item:nth-child(6) { grid-column: span 2; }
 }
