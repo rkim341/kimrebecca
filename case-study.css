@@ -676,3 +676,61 @@
   color: var(--secondary);
   font-size: var(--fs-small);
 }
+
+/* ---------- final features row: screen + numbered title + description ---------- */
+
+.cs-final {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: var(--s-6) var(--s-4);
+  align-items: start;
+}
+
+.cs-final--wide {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.cs-final__item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+}
+
+.cs-final__item img {
+  width: 100%;
+  height: auto;
+  margin-bottom: var(--s-2);
+  border-radius: var(--radius-md);
+}
+
+.cs-final__title {
+  font-size: var(--fs-body);
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+.cs-final__title span {
+  color: var(--disabled);
+}
+
+.cs-final__desc {
+  font-size: var(--fs-small);
+  line-height: 1.4;
+  color: var(--secondary);
+}
+
+.cs-final__desc strong {
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.cs-sub--italic {
+  font-style: italic;
+}
+
+@media (max-width: 809px) {
+  .cs-final,
+  .cs-final--wide {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
