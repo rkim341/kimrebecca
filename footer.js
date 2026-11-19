@@ -1,48 +1,76 @@
-/* Draggable, tossable logo that bounces inside the footer. */
+/* Draggable, tossable, spinning logos that fall and bounce inside the footer.
+   Tap anywhere in the footer to add another one. */
 (function () {
   var footer = document.querySelector(".footer");
   if (!footer) return;
 
-  var SIZE = 40, BOUNCE = 0.8, FRICTION = 0.995, STOP = 0.05;
-  var logo = document.createElement("img");
-  logo.src = "assets/images/rk.logo.big.png";
-  logo.alt = "RK logo";
-  logo.className = "footer__logo";
-  logo.draggable = false;
-  footer.appendChild(logo);
-
-  var x = 0, y = 0, vx = 0, vy = 0, placed = false;
-  var dragging = false, offX = 0, offY = 0, raf = null, last = 0, hist = [];
+  var SIZE = 40, MAX = 30;
+  var GRAVITY = 0.45;      // heavy: pulls down every frame
+  var BOUNCE = 0.45;       // loses most energy on impact
+  var AIR = 0.992;         // air drag
+  var FLOOR_FRICTION = 0.9; // sliding friction on the floor
+  var THROW = 0.8;         // damp release speed so it feels weighty
+  var logos = [], raf = null, last = 0;
 
   function bounds() {
     return { w: footer.clientWidth - SIZE, h: footer.clientHeight - SIZE };
   }
-  function render() {
-    logo.style.transform = "translate(" + x + "px," + y + "px)";
-  }
-  function place() {
+
+  function make(px, py) {
+    var el = document.createElement("img");
+    el.src = "assets/images/rk.logo.big.png";
+    el.alt = logos.length ? "" : "RK logo";
+    el.className = "footer__logo";
+    el.draggable = false;
+    footer.appendChild(el);
     var b = bounds();
-    x = b.w / 2; y = b.h / 2; // starts centered, on top of the text
-    placed = true;
-    render();
+    var l = {
+      el: el, vx: 0, vy: 0, rot: 0, vr: 0, resting: true,
+      x: Math.max(0, Math.min(b.w, px - SIZE / 2)),
+      y: Math.max(0, Math.min(b.h, py - SIZE / 2)),
+      dragging: false, offX: 0, offY: 0, hist: []
+    };
+    logos.push(l);
+    render(l);
+    bind(l);
+    return l;
   }
-  function clamp() {
-    var b = bounds();
-    if (x < 0) { x = 0; vx = Math.abs(vx) * BOUNCE; }
-    else if (x > b.w) { x = b.w; vx = -Math.abs(vx) * BOUNCE; }
-    if (y < 0) { y = 0; vy = Math.abs(vy) * BOUNCE; }
-    else if (y > b.h) { y = b.h; vy = -Math.abs(vy) * BOUNCE; }
+
+  function render(l) {
+    l.el.style.transform =
+      "translate(" + l.x + "px," + l.y + "px) rotate(" + l.rot + "deg)";
   }
+
+  function wake(l) { l.resting = false; startLoop(); }
+
   function step(t) {
     var dt = Math.min((t - last) / 16.67, 3);
     last = t;
-    x += vx * dt; y += vy * dt;
-    clamp();
-    var f = Math.pow(FRICTION, dt);
-    vx *= f; vy *= f;
-    render();
-    if (Math.abs(vx) < STOP && Math.abs(vy) < STOP) { raf = null; return; }
-    raf = requestAnimationFrame(step);
+    var b = bounds(), active = false;
+    logos.forEach(function (l) {
+      if (l.dragging || l.resting) return;
+      l.vy += GRAVITY * dt;
+      var drag = Math.pow(AIR, dt);
+      l.vx *= drag; l.vy *= drag; l.vr *= drag;
+      l.x += l.vx * dt; l.y += l.vy * dt; l.rot += l.vr * dt;
+
+      if (l.x < 0) { l.x = 0; l.vx = Math.abs(l.vx) * BOUNCE; l.vr += l.vy * 0.3; }
+      else if (l.x > b.w) { l.x = b.w; l.vx = -Math.abs(l.vx) * BOUNCE; l.vr -= l.vy * 0.3; }
+      if (l.y < 0) { l.y = 0; l.vy = Math.abs(l.vy) * BOUNCE; }
+      else if (l.y >= b.h) {
+        l.y = b.h;
+        l.vy = -Math.abs(l.vy) * BOUNCE;
+        if (Math.abs(l.vy) < 1.2) l.vy = 0;
+        var f = Math.pow(FLOOR_FRICTION, dt);
+        l.vx *= f;
+        l.vr = l.vr * f + l.vx * 0.4 * (1 - f); // roll a little with motion
+      }
+      if (l.y >= b.h && l.vy === 0 && Math.abs(l.vx) < 0.08 && Math.abs(l.vr) < 0.3) {
+        l.vx = l.vr = 0; l.resting = true;
+      } else active = true;
+      render(l);
+    });
+    raf = active ? requestAnimationFrame(step) : null;
   }
   function startLoop() {
     if (raf) return;
@@ -50,46 +78,68 @@
     raf = requestAnimationFrame(step);
   }
 
-  logo.addEventListener("pointerdown", function (e) {
-    if (!placed) place();
-    dragging = true;
-    if (raf) { cancelAnimationFrame(raf); raf = null; }
-    vx = vy = 0;
-    var r = footer.getBoundingClientRect();
-    offX = e.clientX - r.left - x;
-    offY = e.clientY - r.top - y;
-    hist = [{ t: performance.now(), x: x, y: y }];
-    logo.setPointerCapture(e.pointerId);
-    logo.classList.add("is-dragging");
-    e.preventDefault();
-  });
-  logo.addEventListener("pointermove", function (e) {
-    if (!dragging) return;
-    var r = footer.getBoundingClientRect(), b = bounds();
-    x = Math.max(0, Math.min(b.w, e.clientX - r.left - offX));
-    y = Math.max(0, Math.min(b.h, e.clientY - r.top - offY));
-    var now = performance.now();
-    hist.push({ t: now, x: x, y: y });
-    while (hist.length > 2 && now - hist[0].t > 100) hist.shift();
-    render();
-  });
-  function release() {
-    if (!dragging) return;
-    dragging = false;
-    logo.classList.remove("is-dragging");
-    var a = hist[0], z = hist[hist.length - 1], dt = (z.t - a.t) / 16.67;
-    if (dt > 0 && performance.now() - z.t < 100) {
-      vx = (z.x - a.x) / dt; vy = (z.y - a.y) / dt;
+  function bind(l) {
+    var el = l.el;
+    el.addEventListener("pointerdown", function (e) {
+      l.dragging = true;
+      l.vx = l.vy = l.vr = 0;
+      var r = footer.getBoundingClientRect();
+      l.offX = e.clientX - r.left - l.x;
+      l.offY = e.clientY - r.top - l.y;
+      l.hist = [{ t: performance.now(), x: l.x, y: l.y }];
+      el.setPointerCapture(e.pointerId);
+      el.classList.add("is-dragging");
+      e.preventDefault();
+      e.stopPropagation();
+    });
+    el.addEventListener("pointermove", function (e) {
+      if (!l.dragging) return;
+      var r = footer.getBoundingClientRect(), b = bounds();
+      l.x = Math.max(0, Math.min(b.w, e.clientX - r.left - l.offX));
+      l.y = Math.max(0, Math.min(b.h, e.clientY - r.top - l.offY));
+      var now = performance.now();
+      l.hist.push({ t: now, x: l.x, y: l.y });
+      while (l.hist.length > 2 && now - l.hist[0].t > 100) l.hist.shift();
+      render(l);
+    });
+    function release() {
+      if (!l.dragging) return;
+      l.dragging = false;
+      el.classList.remove("is-dragging");
+      var a = l.hist[0], z = l.hist[l.hist.length - 1], dt = (z.t - a.t) / 16.67;
+      if (dt > 0 && performance.now() - z.t < 100) {
+        l.vx = ((z.x - a.x) / dt) * THROW;
+        l.vy = ((z.y - a.y) / dt) * THROW;
+      }
+      var speed = Math.sqrt(l.vx * l.vx + l.vy * l.vy);
+      // random spin direction/amount, bigger for harder tosses
+      l.vr = (Math.random() < 0.5 ? -1 : 1) * (4 + Math.random() * 8 + speed * 0.6);
+      wake(l);
     }
-    startLoop();
+    el.addEventListener("pointerup", release);
+    el.addEventListener("pointercancel", release);
   }
-  logo.addEventListener("pointerup", release);
-  logo.addEventListener("pointercancel", release);
+
+  // tap anywhere in the footer to add another logo
+  footer.addEventListener("pointerdown", function (e) {
+    if (e.target.classList && e.target.classList.contains("footer__logo")) return;
+    if (logos.length >= MAX) return;
+    var r = footer.getBoundingClientRect();
+    var l = make(e.clientX - r.left, e.clientY - r.top);
+    l.vr = (Math.random() < 0.5 ? -1 : 1) * (3 + Math.random() * 5);
+    wake(l);
+  });
 
   window.addEventListener("resize", function () {
-    if (!placed) return;
-    clamp(); render();
+    var b = bounds();
+    logos.forEach(function (l) {
+      l.x = Math.min(l.x, b.w); l.y = Math.min(l.y, b.h);
+      if (l.y < b.h) l.resting = false;
+      render(l);
+    });
+    startLoop();
   });
 
-  place();
+  var b0 = bounds();
+  make(b0.w / 2 + SIZE / 2, b0.h / 2 + SIZE / 2); // first logo starts on top of the text
 })();
