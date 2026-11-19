@@ -5,11 +5,11 @@
   if (!footer) return;
 
   var SIZE = 40, MAX = 30;
-  var GRAVITY = 0.45;      // heavy: pulls down every frame
-  var BOUNCE = 0.45;       // loses most energy on impact
+  var GRAVITY = 0.32;      // pulls down every frame (a bit lighter)
+  var BOUNCE = 0.58;       // energy kept on impact
   var AIR = 0.992;         // air drag
-  var FLOOR_FRICTION = 0.9; // sliding friction on the floor
-  var THROW = 0.8;         // damp release speed so it feels weighty
+  var FLOOR_FRICTION = 0.93; // sliding friction on the floor
+  var THROW = 0.9;         // release speed multiplier
   var logos = [], raf = null, last = 0;
 
   function bounds() {
@@ -81,7 +81,7 @@
   function bind(l) {
     var el = l.el;
     el.addEventListener("pointerdown", function (e) {
-      l.dragging = true;
+      l.dragging = true; l.moved = true;
       l.vx = l.vy = l.vr = 0;
       var r = footer.getBoundingClientRect();
       l.offX = e.clientX - r.left - l.x;
@@ -140,6 +140,24 @@
     startLoop();
   });
 
-  var b0 = bounds();
-  make(b0.w / 2 + SIZE / 2, b0.h / 2 + SIZE / 2); // first logo starts on top of the text
+  // first logo starts centered exactly on top of the text
+  function textCenter() {
+    var node = footer.firstChild;
+    while (node && node.nodeType !== 3) node = node.nextSibling;
+    var r = footer.getBoundingClientRect();
+    if (!node) return { x: r.width / 2, y: r.height / 2 };
+    var range = document.createRange();
+    range.selectNodeContents(node);
+    var t = range.getBoundingClientRect();
+    return { x: t.left + t.width / 2 - r.left, y: t.top + t.height / 2 - r.top };
+  }
+  var c = textCenter();
+  var first = make(c.x, c.y);
+  window.addEventListener("load", function () {
+    if (first.resting && !first.moved) {
+      var c2 = textCenter();
+      first.x = c2.x - SIZE / 2; first.y = c2.y - SIZE / 2;
+      render(first);
+    }
+  });
 })();
