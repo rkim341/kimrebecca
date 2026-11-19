@@ -214,7 +214,7 @@ p {
 }
 
 .nav__links a:hover {
-  color: var(--teal-dark);
+  color: var(--primary);
 }
 
 .nav__links a[aria-current="page"] {
@@ -718,8 +718,7 @@ a.card:hover .card__title {
 }
 
 .about__text a:not(.button) {
-  color: var(--teal-dark);
-  border-bottom: 1px solid var(--teal-dark);
+  border-bottom: 1px solid var(--disabled);
 }
 
 .about__text a:not(.button) {
@@ -727,8 +726,8 @@ a.card:hover .card__title {
 }
 
 .about__text a:not(.button):hover {
-  color: var(--teal);
-  border-color: var(--teal);
+  color: var(--teal-dark);
+  border-color: var(--teal-dark);
 }
 
 .about__text .button {
@@ -797,14 +796,13 @@ a.card:hover .card__title {
 }
 
 .exp__org a {
-  color: var(--teal-dark);
-  border-bottom: 1px solid var(--teal-dark);
+  border-bottom: 1px solid var(--disabled);
   transition: color 0.2s var(--ease), border-color 0.2s var(--ease);
 }
 
 .exp__org a:hover {
-  color: var(--teal);
-  border-color: var(--teal);
+  color: var(--teal-dark);
+  border-color: var(--teal-dark);
 }
 
 .exp__date {
