@@ -645,7 +645,7 @@
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start; /* each card sizes to its own text, not the taller neighbor */
-  gap: 20px;
+  gap: 32px;
 }
 
 .cs-more .card--row {
