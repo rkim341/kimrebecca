@@ -43,12 +43,52 @@
 
   function wake(l) { l.resting = false; startLoop(); }
 
+  function dragVel(l) {
+    var h = l.hist, a = h[0], z = h[h.length - 1], dt = (z.t - a.t) / 16.67;
+    if (h.length < 2 || dt <= 0 || performance.now() - z.t > 100) return { x: 0, y: 0 };
+    return { x: (z.x - a.x) / dt, y: (z.y - a.y) / dt };
+  }
+
+  // solid logos: circle collisions with impulse, spin and positional correction
+  function collide(a, b, bd) {
+    var dx = (b.x - a.x), dy = (b.y - a.y);
+    var d = Math.sqrt(dx * dx + dy * dy);
+    if (d >= SIZE) return;
+    if (d < 0.001) { dx = 0; dy = -1; d = 1; } // exactly stacked: nudge apart
+    var nx = dx / d, ny = dy / d, overlap = SIZE - d;
+
+    var da = a.dragging, db = b.dragging;
+    if (da && db) return;
+    var wa = da ? 0 : db ? 1 : 0.5, wb = db ? 0 : da ? 1 : 0.5;
+    a.x -= nx * overlap * wa; a.y -= ny * overlap * wa;
+    b.x += nx * overlap * wb; b.y += ny * overlap * wb;
+    [a, b].forEach(function (l) {
+      l.x = Math.max(0, Math.min(bd.w, l.x));
+      l.y = Math.max(0, Math.min(bd.h, l.y));
+    });
+
+    var va = da ? dragVel(a) : { x: a.vx, y: a.vy };
+    var vb = db ? dragVel(b) : { x: b.vx, y: b.vy };
+    var vn = (vb.x - va.x) * nx + (vb.y - va.y) * ny;
+    if (vn >= 0) return; // already separating
+    var e = vn < -1.5 ? 0.55 : 0; // gentle contacts don't bounce
+    var j = -(1 + e) * vn / (wa + wb || 1);
+    if (!da) { a.vx -= j * nx * wa; a.vy -= j * ny * wa; }
+    if (!db) { b.vx += j * nx * wb; b.vy += j * ny * wb; }
+    // friction on the contact turns into spin
+    var tx = -ny, ty = nx;
+    var vt = (vb.x - va.x) * tx + (vb.y - va.y) * ty;
+    if (!da) a.vr += vt * 0.35 * wa * 2;
+    if (!db) b.vr += vt * 0.35 * wb * 2;
+  }
+
   function step(t) {
     var dt = Math.min((t - last) / 16.67, 3);
     last = t;
     var b = bounds(), active = false;
     logos.forEach(function (l) {
-      if (l.dragging || l.resting) return;
+      if (l.dragging) { active = true; return; }
+      if (l.resting) return;
       l.vy += GRAVITY * dt;
       var drag = Math.pow(AIR, dt);
       l.vx *= drag; l.vy *= drag; l.vr *= drag;
@@ -65,11 +105,30 @@
         l.vx *= f;
         l.vr = l.vr * f + l.vx * 0.4 * (1 - f); // roll a little with motion
       }
-      if (l.y >= b.h && l.vy === 0 && Math.abs(l.vx) < 0.08 && Math.abs(l.vr) < 0.3) {
-        l.vx = l.vr = 0; l.resting = true;
-      } else active = true;
+    });
+
+    for (var pass = 0; pass < 3; pass++) {
+      for (var i = 0; i < logos.length; i++) {
+        for (var k = i + 1; k < logos.length; k++) {
+          var A = logos[i], B = logos[k];
+          if (A.resting && B.resting) continue;
+          collide(A, B, b);
+        }
+      }
+    }
+
+    logos.forEach(function (l) {
+      if (l.dragging) return;
+      var speed = Math.sqrt(l.vx * l.vx + l.vy * l.vy);
+      if (l.resting) {
+        if (speed > 0.5) { l.resting = false; l.calm = 0; } else { l.vx = l.vy = 0; return; }
+      }
+      if (speed < 0.6 && Math.abs(l.vr) < 0.3) l.calm = (l.calm || 0) + 1; else l.calm = 0;
+      if (l.calm > 20) { l.vx = l.vy = l.vr = 0; l.resting = true; l.calm = 0; }
+      else active = true;
       render(l);
     });
+    logos.forEach(function (l) { if (l.dragging || l.resting) render(l); });
     raf = active ? requestAnimationFrame(step) : null;
   }
   function startLoop() {
@@ -82,6 +141,8 @@
     var el = l.el;
     el.addEventListener("pointerdown", function (e) {
       l.dragging = true; l.moved = true;
+      logos.forEach(function (o) { if (o !== l) o.resting = false; });
+      startLoop();
       l.vx = l.vy = l.vr = 0;
       var r = footer.getBoundingClientRect();
       l.offX = e.clientX - r.left - l.x;
