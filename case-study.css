@@ -645,7 +645,7 @@
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   align-items: start; /* each card sizes to its own text, not the taller neighbor */
-  gap: var(--s-6);
+  gap: 20px;
 }
 
 .cs-actions {
