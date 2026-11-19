@@ -22,7 +22,7 @@ var PROJECTS = [
     href: "jotdown.html",
     name: "JotDown",
     title: "JotDown",
-    desc: "AI-Powered Smart Note App with Semantic (natural language) Search and Category Visualization (UX Design)",
+    desc: "AI-Powered Smart Note App with Semantic (natural language) Search and Category Visualization",
     tags: [{ label: "UXD", accent: true }, { label: "Sr UX Designer" }, { label: "Dev + Design" }],
     image: { src: "assets/jotdown/jotdown.mock.jpg", alt: "Jotdown app mockup", width: 1800, height: 1013 }
   },
@@ -31,7 +31,7 @@ var PROJECTS = [
     href: "apm-season.html",
     name: "APM Season",
     title: "APM Season",
-    desc: "Monetization & Information Architecture focused Job Portal Redesign (UX Design)",
+    desc: "Monetization & Information Architecture focused Job Portal Redesign",
     tags: [{ label: "UX/UI", accent: true }, { label: "Design Lead" }, { label: "UX Research" }],
     image: { src: "assets/apm-season/apmseason.mock.jpg", alt: "APM Season website on two laptop screens", width: 1800, height: 1013 }
   },
@@ -41,7 +41,7 @@ var PROJECTS = [
     href: "conversate.html",
     name: "Conversate",
     title: "Conversate",
-    desc: "Building conversational confidence and facilitating meaningful conversations for introverts (UX Design)",
+    desc: "Building conversational confidence and facilitating meaningful conversations for introverts",
     tags: [{ label: "UXD", accent: true }, { label: "Senior Capstone" }, { label: "AI Prototyping" }],
     image: { src: "assets/conversate/conversate.hero.png", alt: "Conversate app", width: 5760, height: 3240 }
   }
