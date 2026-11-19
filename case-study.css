@@ -11,18 +11,18 @@
   gap: var(--s-6);
 }
 
-/* Rail + content sit in a centered column, 60% of the screen. */
+/* Rail + content sit in a centered column, 70% of the screen. */
 @media (min-width: 1100px) {
   .cs-layout {
     grid-template-columns: 140px minmax(0, 1fr);
     gap: var(--s-10);
-    width: 60%;
+    width: 70%;
     margin: 0 auto;
     padding-left: 0;
     padding-right: 0;
   }
   .cs-more-band__inner {
-    width: 60%;
+    width: 70%;
     max-width: none;
   }
 }
