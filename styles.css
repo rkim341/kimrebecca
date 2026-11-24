@@ -417,24 +417,6 @@ p {
   padding: 37px var(--edge-r) var(--s-32) var(--edge-l);
 }
 
-@media (min-width: 1000px) {
-  .home-linear {
-    grid-template-columns: 370px minmax(0, 1fr);
-    column-gap: 52px;
-  }
-  /* The intro stays put while the project list scrolls. */
-  .intro {
-    position: sticky;
-    top: calc(var(--nav-h) + 37px);
-    align-self: start;
-    /* Fill the viewport so the closing paragraph sits at the very bottom. */
-    height: calc(100vh - var(--nav-h) - 37px - var(--s-6));
-  }
-  .intro__about {
-    margin-top: auto;
-  }
-}
-
 @media (max-width: 809px) {
   .home-linear {
     padding: var(--s-6) var(--edge-r) var(--s-16) var(--edge-l);
