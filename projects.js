@@ -15,7 +15,7 @@ var PROJECTS = [
     title: "Georgia Tech App",
     desc: "Launching the official Georgia Tech App, combining eight apps into one, all-in-one app for 50K+ students.",
     tags: [{ label: "UXD", accent: true }, { label: "Lead UX Designer" }, { label: "Beta" }],
-    image: { src: "assets/gatech/context.png", alt: "Georgia Tech App home and map screens in front of a campus building", width: 1920, height: 1080, position: "50% 0%" }
+    image: { src: "assets/gatech/context.png", alt: "Georgia Tech App home and map screens in front of a campus building", width: 1920, height: 1080 }
   },
   {
     slug: "chi",
@@ -61,7 +61,6 @@ var PROJECTS = [
     node.alt = image.alt;
     node.width = image.width;
     node.height = image.height;
-    if (image.position) node.style.objectPosition = image.position;
     if (lazy) node.loading = "lazy";
     return node;
   }
