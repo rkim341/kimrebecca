@@ -694,7 +694,6 @@
 
 .cs-final__item img {
   width: 100%;
-  max-width: 640px;
   height: auto;
   margin-bottom: var(--s-2);
   border-radius: var(--radius-md);
