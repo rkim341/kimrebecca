@@ -444,12 +444,15 @@ p {
 
 .intro__signature {
   display: block;
-  width: 100%;
+  /* Full-bleed so the trailing line runs off the viewport edges instead of ending mid-page. */
+  width: calc(100% + var(--edge-l) + var(--edge-r));
+  max-width: none;
   height: auto;
+  margin-left: calc(-1 * var(--edge-l));
 }
 
 .intro__bio {
-  font-size: 16px; /* same size and tracking as the roles */
+  font-size: 22px;
   letter-spacing: -0.01em;
   color: var(--secondary);
 }
