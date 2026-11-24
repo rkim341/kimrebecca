@@ -413,7 +413,7 @@ p {
 .home-linear {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  gap: var(--s-10);
+  gap: var(--s-32);
   padding: 37px var(--edge-r) var(--s-32) var(--edge-l);
 }
 
