@@ -23,8 +23,8 @@ var PROJECTS = [
     name: "Chi",
     title: "Chi",
     desc: "A Kimchi Stool Created for Safety and Culture",
-    tags: [{ label: "Industrial Design", accent: true }, { label: "SIT 2025 Design Award" }, { label: "CAD" }],
-    image: { src: "assets/chi/chi.hero.jpg", alt: "Chi, a curved wooden kimchi stool", width: 1800, height: 1391 }
+    tags: [{ label: "ID", accent: true }, { label: "SIT 2025 Design Award" }, { label: "CAD" }],
+    image: { src: "assets/chi/in-use2.jpg", alt: "Person making kimchi while sitting on the Chi stool", width: 1800, height: 1073 }
   },
   {
     slug: "apm-season",

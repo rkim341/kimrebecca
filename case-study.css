@@ -681,13 +681,9 @@
 
 .cs-final {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: var(--s-6) var(--s-4);
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--s-10);
   align-items: start;
-}
-
-.cs-final--wide {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .cs-final__item {
@@ -698,6 +694,7 @@
 
 .cs-final__item img {
   width: 100%;
+  max-width: 640px;
   height: auto;
   margin-bottom: var(--s-2);
   border-radius: var(--radius-md);
@@ -724,9 +721,3 @@
   font-style: italic;
 }
 
-@media (max-width: 809px) {
-  .cs-final,
-  .cs-final--wide {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
