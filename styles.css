@@ -413,8 +413,8 @@ p {
 .home-linear {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  gap: var(--s-32);
-  padding: 96px var(--edge-r) var(--s-32) var(--edge-l);
+  gap: var(--s-10);
+  padding: 184px var(--edge-r) var(--s-32) var(--edge-l);
 }
 
 @media (max-width: 809px) {
