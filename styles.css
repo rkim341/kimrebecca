@@ -414,7 +414,7 @@ p {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: var(--s-32);
-  padding: 37px var(--edge-r) var(--s-32) var(--edge-l);
+  padding: 96px var(--edge-r) var(--s-32) var(--edge-l);
 }
 
 @media (max-width: 809px) {
