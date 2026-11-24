@@ -686,6 +686,22 @@
   align-items: start;
 }
 
+.cs-final--side {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: var(--s-6) var(--s-4);
+}
+
+.cs-final--side.cs-final--wide {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+@media (max-width: 809px) {
+  .cs-final--side,
+  .cs-final--side.cs-final--wide {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 .cs-final__item {
   display: flex;
   flex-direction: column;
