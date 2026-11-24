@@ -18,13 +18,13 @@ var PROJECTS = [
     image: { src: "assets/gatech/gatech.hero.jpg", alt: "Official Georgia Tech App on a phone", width: 1800, height: 1013 }
   },
   {
-    slug: "jotdown",
-    href: "jotdown.html",
-    name: "JotDown",
-    title: "JotDown",
-    desc: "AI-Powered Smart Note App with Semantic (natural language) Search and Category Visualization",
-    tags: [{ label: "UXD", accent: true }, { label: "Sr UX Designer" }, { label: "Dev + Design" }],
-    image: { src: "assets/jotdown/jotdown.mock.jpg", alt: "Jotdown app mockup", width: 1800, height: 1013 }
+    slug: "chi",
+    href: "chi.html",
+    name: "Chi",
+    title: "Chi",
+    desc: "A Kimchi Stool Created for Safety and Culture",
+    tags: [{ label: "Industrial Design", accent: true }, { label: "SIT 2025 Design Award" }, { label: "CAD" }],
+    image: { src: "assets/chi/chi.hero.jpg", alt: "Chi, a curved wooden kimchi stool", width: 1800, height: 1391 }
   },
   {
     slug: "apm-season",

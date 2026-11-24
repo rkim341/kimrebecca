@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chi — Rebecca Kim</title>
+  <meta name="description" content="A Kimchi Stool Created for Safety and Culture">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+  <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="case-study.css">
+</head>
+<body data-project="chi">
+  <div class="page">
+    <header class="nav">
+      <div class="nav__inner">
+        <a class="nav__logo" href="index.html" aria-label="Rebecca Kim, home">
+          <img src="assets/images/star-logo.png" alt="" width="32" height="31">
+        </a>
+        <nav aria-label="Primary">
+          <ul class="nav__links">
+            <li><a href="index.html#work">projects</a></li>
+            <li><a href="about.html">about</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <div class="cs-layout">
+      <aside class="cs-progress" aria-label="On this page">
+        <a class="button button--back" href="index.html#work"><span aria-hidden="true">←</span> Back</a>
+      </aside>
+      <main class="cs">
+
+        <!-- Title, description, tags and hero image come from projects.js. -->
+        <header class="cs-head" data-project-header></header>
+
+        <div class="cs-hero" data-project-hero></div>
+
+        <!-- TEMPLATE: fill in each section below. Every section with a data-nav attribute
+             automatically appears in the sticky progress list. Delete or add sections freely. -->
+
+        <div class="cs-facts">
+          <div class="cs-fact"><span class="cs-label">Timeline</span><p>2 months<br>Jan '25 - Feb '25</p></div>
+          <div class="cs-fact"><span class="cs-label">My Role</span><p>Designer &amp; Builder</p></div>
+          <div class="cs-fact"><span class="cs-label">Team</span><p>Just me, plus studio feedback</p></div>
+          <div class="cs-fact"><span class="cs-label">Tools</span><p>Fusion<br>KeyShot<br>Workshop machines<br>Adobe Creative Cloud</p></div>
+        </div>
+
+        <section class="cs-section" id="project" data-nav="Context">
+          <div class="cs-head"><h2 class="cs-h2">The Project</h2></div>
+          <div class="cs-prose"><p>The brief was to design and create a stool that has a purpose. My grandmother’s knees are weak from climbing many subway stairs, and she struggles to squat while making kimchi. Chi is a gift to kimchi makers, designed to improve safety and reflect the history of kimchi making.</p></div>
+          <div class="cs-callouts">
+            <div class="cs-callout"><h3 class="cs-h4">The Problem:</h3><p>How might I design a kimchi stool that celebrates culture and improves ergonomics?</p></div>
+            <div class="cs-callout"><h3 class="cs-h4">The Outcome:</h3><p>2025 SIT Furniture Design Award, Stool &amp; Other Chairs category.</p></div>
+          </div>
+        </section>
+
+        <section class="cs-section" id="final-features" data-nav="Process">
+          <div class="cs-head"><h2 class="cs-h2">Process &amp; Final Design</h2></div>
+          <div class="cs-final">
+            <article class="cs-final__item">
+              <img src="assets/chi/sketch-models.jpg" alt="Small paper models exploring stool forms" loading="lazy">
+              <h3 class="cs-final__title"><span>1.</span> Form Exploration</h3>
+              <p class="cs-final__desc">Small models to explore shapes that support squatting posture</p>
+            </article>
+            <article class="cs-final__item">
+              <img src="assets/chi/prototype.jpg" alt="3D printed prototype of the stool" loading="lazy">
+              <h3 class="cs-final__title"><span>2.</span> Prototype</h3>
+              <p class="cs-final__desc">A scaled print to test the arch and seat curve</p>
+            </article>
+            <article class="cs-final__item">
+              <img src="assets/chi/bending.jpg" alt="Bent plywood layers clamped in the workshop" loading="lazy">
+              <h3 class="cs-final__title"><span>3.</span> Wood Bending</h3>
+              <p class="cs-final__desc">Laminating and clamping layers of wood into the final curves</p>
+            </article>
+            <article class="cs-final__item">
+              <img src="assets/chi/detail.jpg" alt="Close-up of the finished stool seat" loading="lazy">
+              <h3 class="cs-final__title"><span>4.</span> The Stool</h3>
+              <p class="cs-final__desc">A low, curved seat with a supportive arch base</p>
+            </article>
+            <article class="cs-final__item">
+              <img src="assets/chi/in-use.jpg" alt="Person sitting on the stool while making kimchi" loading="lazy">
+              <h3 class="cs-final__title"><span>5.</span> Made for Kimchi Makers</h3>
+              <p class="cs-final__desc">A safer, more comfortable height for mixing kimchi</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="cs-section" id="learned" data-nav="Takeaways">
+          <h2 class="cs-h2">Final Takeaways</h2>
+          <div class="cs-prose">
+            <p>The piece took over 40 hours and required many new skills. I love UX/UI work, but physically usable industrial design projects like this are also rewarding.</p>
+            <p><strong>Key Learnings:</strong> Wood Bending, Ergonomics, CAD &amp; 3D Rendering</p>
+          </div>
+        </section>
+
+      </main>
+    </div>
+
+    <!-- Outside .cs-layout so the sticky progress rail scrolls away before this band. -->
+    <section class="cs-more-band" aria-labelledby="more-title">
+      <div class="cs-more-band__inner">
+        <h2 class="cs-more-band__title" id="more-title">Other case studies you may like</h2>
+        <div class="cs-more" data-project-more></div>
+      </div>
+    </section>
+
+    <footer class="footer">rebecca kim - always experimenting ⊹ ࣪ ˖</footer>
+  </div>
+  <script src="projects.js"></script>
+  <script src="case-study.js"></script>
+<script src="footer.js"></script>
+</body>
+</html>
