@@ -15,7 +15,7 @@ var PROJECTS = [
     title: "Georgia Tech App",
     desc: "Launching the official Georgia Tech App, combining eight apps into one, all-in-one app for 50K+ students.",
     tags: [{ label: "UXD", accent: true }, { label: "Lead UX Designer" }, { label: "Beta" }],
-    image: { src: "assets/gatech/gatech.hero.jpg", alt: "Official Georgia Tech App on a phone", width: 1800, height: 1013 }
+    image: { src: "assets/gatech/context.png", alt: "Georgia Tech App home and map screens in front of a campus building", width: 1920, height: 1080 }
   },
   {
     slug: "chi",
